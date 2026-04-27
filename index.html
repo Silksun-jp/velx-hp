@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELX | 基板分割機の販売・サポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal: #3A3A3A;
+    --silver-dark: #9E9E9E;
+    --silver-mid: #C8C8C8;
+    --silver-light: #E8E8E8;
+    --silver-faint: #F2F2F2;
+    --white: #FFFFFF;
+    --teal: #00B4A0;
+    --teal-dark: #008878;
+    --teal-light: #E0F7F5;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color: var(--charcoal); font-size: 15px; line-height: 1.8; }
+
+  /* INTRO */
+  #intro { position: fixed; inset: 0; z-index: 9999; background: var(--silver-faint); display: flex; align-items: center; justify-content: center; }
+  .intro-sweep { width: 0; height: 2px; background: var(--teal); margin-top: 16px; }
+  .intro-word { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 16px; color: var(--charcoal); margin-top: 20px; opacity: 0; transform: translateY(12px); }
+  .intro-tag { font-size: 11px; letter-spacing: 5px; color: var(--teal); text-transform: uppercase; margin-top: 8px; opacity: 0; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; border-bottom: 1px solid var(--silver-light); }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo svg { width: 26px; height: 32px; }
+  .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 5px; color: var(--charcoal); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--silver-dark); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { background: var(--teal) !important; color: #fff !important; padding: 8px 20px; border-radius: 4px; font-weight: 500 !important; }
+  .nav-cta:hover { background: var(--teal-dark) !important; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: var(--silver-faint); display: flex; flex-direction: column; justify-content: center; padding: 120px 80px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,0.018) 60px, rgba(0,0,0,0.018) 61px); pointer-events: none; }
+  .hero-teal-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--teal); }
+  .hero-label { font-size: 11px; letter-spacing: 4px; color: var(--teal); text-transform: uppercase; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 7.5vw, 96px); line-height: 1.0; color: var(--charcoal); letter-spacing: 2px; max-width: 800px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
+  .hero-title span { color: var(--teal); }
+  .hero-sub { margin-top: 28px; font-size: 15px; color: var(--silver-dark); max-width: 480px; line-height: 1.9; font-weight: 300; opacity: 0; animation: fadeUp 0.7s ease forwards 0.6s; }
+  .hero-actions { display: flex; gap: 16px; margin-top: 44px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.8s; }
+  .btn-primary { background: var(--teal); color: #fff; padding: 14px 32px; border-radius: 4px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-outline { border: 1px solid var(--silver-mid); color: var(--charcoal); padding: 14px 32px; border-radius: 4px; font-size: 14px; text-decoration: none; transition: border-color 0.2s, color 0.2s; background: var(--white); }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+  .hero-stats { display: flex; gap: 48px; margin-top: 64px; opacity: 0; animation: fadeUp 0.7s ease forwards 1.0s; border-top: 1px solid var(--silver-light); padding-top: 32px; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--charcoal); letter-spacing: 2px; }
+  .stat-num span { color: var(--teal); font-size: 20px; }
+  .stat-label { font-size: 11px; color: var(--silver-dark); letter-spacing: 1px; margin-top: 2px; }
+  .hero-logo-bg { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); opacity: 0.06; }
+  .hero-logo-bg svg { width: 300px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* COMMON */
+  section { padding: 96px 80px; }
+  .section-label { font-size: 11px; letter-spacing: 4px; color: var(--teal); text-transform: uppercase; margin-bottom: 12px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 2px; color: var(--charcoal); line-height: 1.1; margin-bottom: 16px; }
+  .section-desc { font-size: 14px; color: var(--silver-dark); max-width: 520px; line-height: 1.9; margin-bottom: 56px; }
+  .teal-divider { width: 48px; height: 2px; background: var(--teal); margin-bottom: 32px; }
+
+  /* FEATURES */
+  .features { background: var(--white); }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--silver-light); border: 1px solid var(--silver-light); border-radius: 8px; overflow: hidden; }
+  .feature-card { background: var(--white); padding: 40px 32px; transition: background 0.2s; }
+  .feature-card:hover { background: var(--teal-light); }
+  .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--teal-light); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .feature-icon svg { width: 20px; height: 20px; }
+  .feature-title { font-size: 16px; font-weight: 500; color: var(--charcoal); margin-bottom: 10px; }
+  .feature-text { font-size: 13px; color: var(--silver-dark); line-height: 1.8; }
+  .f-line { width: 24px; height: 2px; background: var(--teal); margin-bottom: 16px; }
+
+  /* INSPECTION */
+  /* PRODUCTS */
+  .products { background: var(--silver-faint); }
+  .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .product-card { background: var(--white); border-radius: 8px; border: 1px solid var(--silver-light); overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+  .product-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+  .product-card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .product-img { background: var(--silver-light); min-height: 200px; display: flex; align-items: center; justify-content: center; }
+  .product-img span { font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--silver-dark); letter-spacing: 2px; }
+  .product-body { padding: 32px; }
+  .product-tag { font-size: 10px; letter-spacing: 3px; color: var(--teal); text-transform: uppercase; margin-bottom: 10px; }
+  .product-name { font-size: 18px; font-weight: 500; color: var(--charcoal); margin-bottom: 12px; line-height: 1.4; }
+  .product-desc { font-size: 13px; color: var(--silver-dark); line-height: 1.8; }
+  .product-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 13px; color: var(--teal); text-decoration: none; font-weight: 500; transition: gap 0.2s; }
+  .product-link::after { content: '→'; }
+  .product-link:hover { gap: 10px; }
+
+  /* SELECTION */
+  .selection { background: var(--white); }
+  .sel-flow { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--silver-light); border-radius: 8px; overflow: hidden; margin-top: 16px; }
+  .flow-step { padding: 32px 24px; border-right: 1px solid var(--silver-light); position: relative; transition: background 0.2s; }
+  .flow-step:hover { background: var(--teal-light); }
+  .flow-step:last-child { border-right: none; }
+  .flow-arrow { position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: var(--teal); font-size: 18px; z-index: 1; }
+  .flow-step:last-child .flow-arrow { display: none; }
+  .flow-num { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--silver-light); line-height: 1; margin-bottom: 12px; }
+  .flow-title { font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--charcoal); }
+  .flow-text { font-size: 12px; color: var(--silver-dark); line-height: 1.8; }
+
+  /* ABOUT */
+  .about { background: var(--silver-faint); }
+  .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about-table { width: 100%; border-collapse: collapse; }
+  .about-table tr { border-bottom: 1px solid var(--silver-light); }
+  .about-table td { padding: 14px 0; font-size: 14px; vertical-align: top; }
+  .about-table td:first-child { color: var(--silver-dark); width: 120px; font-size: 12px; padding-right: 24px; }
+  .about-highlight { border-left: 3px solid var(--teal); padding-left: 20px; margin-bottom: 32px; }
+  .about-highlight p { font-size: 16px; font-weight: 500; line-height: 1.7; }
+  .about-text { font-size: 14px; color: var(--silver-dark); line-height: 1.9; margin-bottom: 24px; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-info-block { display: flex; flex-direction: column; gap: 20px; }
+  .contact-method { background: var(--silver-faint); border: 1px solid var(--silver-light); border-radius: 6px; padding: 24px 28px; }
+  .contact-method-label { font-size: 10px; letter-spacing: 3px; color: var(--teal); text-transform: uppercase; margin-bottom: 8px; }
+  .contact-method-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--charcoal); letter-spacing: 2px; }
+  .contact-method-sub { font-size: 12px; color: var(--silver-dark); margin-top: 4px; }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form textarea { background: var(--silver-faint); border: 1px solid var(--silver-light); border-radius: 4px; padding: 13px 16px; color: var(--charcoal); font-family: 'Noto Sans JP', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; width: 100%; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--silver-mid); }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--teal); background: var(--white); }
+  .contact-form textarea { min-height: 120px; resize: vertical; }
+  .btn-send { background: var(--teal); color: #fff; border: none; padding: 14px; border-radius: 4px; font-size: 14px; font-weight: 500; font-family: 'Noto Sans JP', sans-serif; cursor: pointer; transition: background 0.2s; width: 100%; }
+  .btn-send:hover { background: var(--teal-dark); }
+
+  /* FOOTER */
+  footer { background: var(--silver-faint); padding: 40px 80px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--silver-light); }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 5px; color: var(--silver-mid); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--silver-dark); text-decoration: none; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 11px; color: var(--silver-mid); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    /* NAV */
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+
+    /* HERO */
+    .hero { padding: 100px 24px 60px; }
+    .hero-logo-bg { display: none; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+
+    /* SECTIONS */
+    section { padding: 64px 24px; }
+    .section-title { font-size: 36px; }
+
+    /* FEATURES */
+    .features-grid { grid-template-columns: 1fr; }
+
+    /* INSPECTION */
+    /* PRODUCTS */
+    .products-grid { grid-template-columns: 1fr; }
+    .product-card:first-child { grid-column: 1; display: block; }
+
+    /* SELECTION */
+    .sel-flow { grid-template-columns: 1fr 1fr; }
+    .flow-step { border-right: none; border-bottom: 1px solid var(--silver-light); }
+    .flow-step:nth-child(odd) { border-right: 1px solid var(--silver-light); }
+    .flow-arrow { display: none; }
+
+    /* ABOUT */
+    .about-layout { grid-template-columns: 1fr; gap: 40px; }
+
+    /* CONTACT */
+    .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+
+    /* FOOTER */
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div style="display:flex;flex-direction:column;align-items:center;">
+    <svg id="intro-logo" viewBox="427 244 91 77" style="width:100px;height:auto;opacity:0;">
+      <defs>
+        <linearGradient id="ig16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+        <linearGradient id="ig11" x1="475.02" y1="277.21" x2="517.99" y2="277.21" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+      </defs>
+      <polygon fill="#3e3a39" points="461.56 261.39 438.46 261.39 427.7 244.34 450.81 244.34"/>
+      <polygon fill="url(#ig16)" points="483.06 308.39 475.62 320.21 442.32 267.49 450.93 267.49 467.56 293.83 470.71 288.85"/>
+      <path fill="url(#ig11)" d="M517.99,252.87l-30.63,48.68-.06-.1-12.28-19.42,13.72-21.69c.63-1,.86-2.21.63-3.37l-.82-4.1h29.44Z"/>
+      <polygon fill="#3e3a39" points="472.91 278.69 475.03 282.03 470.71 288.85 464.3 278.69"/>
+      <polygon fill="#3e3a39" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
+    </svg>
+    <div class="intro-sweep" id="sweep"></div>
+    <div class="intro-word" id="iword">VELX</div>
+    <div class="intro-tag" id="itag">Precision Board Cutting</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="427 244 310 77" style="height:32px;width:auto;">
+      <defs>
+        <linearGradient id="ng16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+        <linearGradient id="ng11" x1="475.02" y1="277.21" x2="517.99" y2="277.21" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+      </defs>
+      <polygon fill="#3e3a39" points="461.56 261.39 438.46 261.39 427.7 244.34 450.81 244.34"/>
+      <polygon fill="url(#ng16)" points="483.06 308.39 475.62 320.21 442.32 267.49 450.93 267.49 467.56 293.83 470.71 288.85"/>
+      <path fill="url(#ng11)" d="M517.99,252.87l-30.63,48.68-.06-.1-12.28-19.42,13.72-21.69c.63-1,.86-2.21.63-3.37l-.82-4.1h29.44Z"/>
+      <polygon fill="#3e3a39" points="472.91 278.69 475.03 282.03 470.71 288.85 464.3 278.69"/>
+      <polygon fill="#3e3a39" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
+      <polygon fill="#3e3a39" points="517.54 273.37 517.54 306.11 527.68 306.11 527.68 273.37"/>
+      <polygon fill="#3e3a39" points="529.64 296.93 529.64 304.49 567.26 273.37 558.08 273.37"/>
+      <rect fill="#3e3a39" x="573.72" y="273.37" width="35.21" height="5.87"/>
+      <polygon fill="#3e3a39" points="583.85 300.24 583.85 289.53 603.23 289.53 603.23 283.66 583.85 283.66 573.72 283.66 573.72 289.53 573.72 300.24 573.72 306.11 583.85 306.11 623.33 306.11 623.33 300.24 583.85 300.24"/>
+      <rect fill="#3e3a39" x="641.87" y="300.24" width="37.62" height="5.87"/>
+      <rect fill="#3e3a39" x="629.77" y="273.37" width="10.13" height="32.75"/>
+      <polygon fill="#3e3a39" points="717.23 288.54 712.88 284.51 700.85 273.37 685.95 273.37 705 291.03 709.35 295.05 721.28 306.11 736.19 306.11"/>
+      <polygon fill="#3e3a39" points="735.59 273.37 726.38 273.37 714.41 283.25 718.75 287.28"/>
+      <polygon fill="#3e3a39" points="686.75 306.11 695.96 306.11 707.81 296.32 703.47 292.3"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">製品の特長</a></li>
+    <li><a href="#products">製品紹介</a></li>
+    <li><a href="#selection">機種選定</a></li>
+    <li><a href="#about">会社案内</a></li>
+    <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-teal-bar"></div>
+  <p class="hero-label">Precision Board Cutting Technology</p>
+  <h1 class="hero-title">基板を、<span>正確</span>に。<br>環境を、大切に。</h1>
+  <p class="hero-sub">VELXは低ストレス・高精度な基板分割機を提供します。モーター駆動なし。環境負荷なし。確かな品質だけ。</p>
+  <div class="hero-actions">
+    <a href="#products" class="btn-primary">製品を見る</a>
+    <a href="#contact" class="btn-outline">お問い合わせ・ご相談</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">4<span>機種</span></div><div class="stat-label">ラインナップ</div></div>
+    <div><div class="stat-num">CO<span>2</span></div><div class="stat-label">カーボンオフセット認定</div></div>
+  </div>
+  <div class="hero-logo-bg">
+    <svg viewBox="427 244 91 77" style="width:300px;height:auto;">
+      <defs>
+        <linearGradient id="hg16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#3A3A3A"/><stop offset="1" stop-color="#3A3A3A"/>
+        </linearGradient>
+        <linearGradient id="hg11" x1="475.02" y1="277.21" x2="517.99" y2="277.21" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#3A3A3A"/><stop offset="1" stop-color="#3A3A3A"/>
+        </linearGradient>
+      </defs>
+      <polygon fill="#3A3A3A" points="461.56 261.39 438.46 261.39 427.7 244.34 450.81 244.34"/>
+      <polygon fill="#3A3A3A" points="483.06 308.39 475.62 320.21 442.32 267.49 450.93 267.49 467.56 293.83 470.71 288.85"/>
+      <path fill="#3A3A3A" d="M517.99,252.87l-30.63,48.68-.06-.1-12.28-19.42,13.72-21.69c.63-1,.86-2.21.63-3.37l-.82-4.1h29.44Z"/>
+      <polygon fill="#3A3A3A" points="472.91 278.69 475.03 282.03 470.71 288.85 464.3 278.69"/>
+      <polygon fill="#3A3A3A" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
+    </svg>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="reveal">
+    <p class="section-label">Solution</p>
+    <h2 class="section-title">VELXが選ばれる理由</h2>
+    <div class="teal-divider"></div>
+    <p class="section-desc">精度を徹底的に追求した設計と、環境に優しい非切削方式で、製造現場の課題に応えます。</p>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00B4A0" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+      <div class="f-line"></div>
+      <div class="feature-title">低ストレス分割</div>
+      <p class="feature-text">上刃と下刃が交差しない独自機構により、基板への応力を最小限に抑えた精密カットを実現。電子部品へのダメージを防ぎます。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00B4A0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="f-line"></div>
+      <div class="feature-title">環境に優しい設計</div>
+      <p class="feature-text">モーター駆動による切削カットではないため、粉塵・騒音が少なくクリーンな作業環境を実現。ランニングコストも大幅削減。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00B4A0" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="f-line"></div>
+      <div class="feature-title">豊富な機種ラインナップ</div>
+      <p class="feature-text">手動シングルからモーター搭載ダブル機種、丸刃タイプまで。基板サイズ・ラインの自動化レベルに合わせて最適機種を選定。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00B4A0" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="f-line"></div>
+      <div class="feature-title">導入後サポート</div>
+      <p class="feature-text">刃の交換注意点や定期メンテナンスまで、導入後も専門スタッフが丁寧にサポート。長野県内はもちろん、全国対応いたします。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00B4A0" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <div class="f-line"></div>
+      <div class="feature-title">カーボンオフセット認定</div>
+      <p class="feature-text">環境への配慮は製品設計だけにとどまりません。カーボン・オフセット認定事業者として、持続可能な製造業を支援します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="reveal">
+    <p class="section-label">Product</p>
+    <h2 class="section-title">製品ラインナップ</h2>
+    <div class="teal-divider"></div>
+    <p class="section-desc">低ストレス・高精度な基板分割を実現する4機種をラインナップしています。</p>
+  </div>
+  <div class="products-grid reveal">
+    <div class="product-card">
+      <div class="product-img"><span>SINGLE MODEL</span></div>
+      <div class="product-body">
+        <p class="product-tag">シングル機種 / 手動</p>
+        <h3 class="product-name">シングル機種（手動タイプ）</h3>
+        <p class="product-desc">シンプルかつ高精度。スタンダードな基板分割作業に最適な手動タイプ。小ロット・多品種対応に優れた操作性を持ちます。</p>
+        <a href="#contact" class="product-link">詳細・お問い合わせ</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span>SINGLE MOTOR</span></div>
+      <div class="product-body">
+        <p class="product-tag">シングル機種 / モーター付き</p>
+        <h3 class="product-name">シングル機種<br>上刃基板送りモーター（切替機付き）</h3>
+        <p class="product-desc">基板送りをモーター化しスループットを向上。手動と自動を切り替え可能で、ラインの省力化に貢献します。</p>
+        <a href="#contact" class="product-link">詳細・お問い合わせ</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span>DOUBLE MODEL</span></div>
+      <div class="product-body">
+        <p class="product-tag">ダブル機種</p>
+        <h3 class="product-name">ダブル機種</h3>
+        <p class="product-desc">上下刃を同時に使用することで、さらに精密な分割を実現。実装基板に対する安全でやさしいカットが可能です。</p>
+        <a href="#contact" class="product-link">詳細・お問い合わせ</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span>ROUND BLADE</span></div>
+      <div class="product-body">
+        <p class="product-tag">丸刃タイプ</p>
+        <h3 class="product-name">上刃下刃 丸刃タイプ</h3>
+        <p class="product-desc">丸刃を採用した特殊タイプ。特定の基板形状・材質に対して高い適合性を持ちます。詳細はお問い合わせください。</p>
+        <a href="#contact" class="product-link">詳細・お問い合わせ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTION -->
+<section class="selection" id="selection">
+  <div class="reveal">
+    <p class="section-label">Selection</p>
+    <h2 class="section-title">機種選定の流れ</h2>
+    <div class="teal-divider"></div>
+    <p class="section-desc">基板仕様を確認しながら、お客様の用途に最適な機種をご提案します。</p>
+  </div>
+  <div class="sel-flow reveal">
+    <div class="flow-step"><div class="flow-num">01</div><div class="flow-title">基板仕様のご確認</div><p class="flow-text">材質・板厚・V溝形状・実装状況をヒアリング</p><span class="flow-arrow">›</span></div>
+    <div class="flow-step"><div class="flow-num">02</div><div class="flow-title">用途・環境の確認</div><p class="flow-text">ライン構成・量産規模・自動化の要否を確認</p><span class="flow-arrow">›</span></div>
+    <div class="flow-step"><div class="flow-num">03</div><div class="flow-title">刃角度・機種設定</div><p class="flow-text">データ解析により最適な刃の角度と機種を決定</p><span class="flow-arrow">›</span></div>
+    <div class="flow-step"><div class="flow-num">04</div><div class="flow-title">導入・サポート</div><p class="flow-text">導入後も継続的なサポートで安心運用</p></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-layout">
+    <div class="reveal">
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">会社案内</h2>
+      <div class="teal-divider"></div>
+      <div class="about-highlight"><p>高精度な基板分割機の販売・サポートを通じて、製造現場の品質向上と持続可能な生産に貢献します。</p></div>
+      <p class="about-text">長野県小諸市を拠点に、基板分割機の販売・サポートを行っています。お客様の基板に最適な機種をデータに基づいてご提案し、導入後も長期にわたるサポートを提供します。</p>
+      <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:8px;">お問い合わせ・相談</a>
+    </div>
+    <div class="reveal">
+      <table class="about-table">
+        <tr><td>社名</td><td>VELX株式会社</td></tr>
+        <tr><td>所在地</td><td>〒384-0061<br>長野県小諸市加増一丁目１番８号</td></tr>
+        <tr><td>電話</td><td>0267-28-9853</td></tr>
+        <tr><td>FAX</td><td>0267-27-0931</td></tr>
+        <tr><td>メール</td><td>info@velx.co.jp</td></tr>
+        <tr><td>代表者</td><td>髙橋桃絵</td></tr>
+        <tr><td>設立</td><td>2026年4月</td></tr>
+        <tr><td>資本金</td><td>200万円</td></tr>
+        <tr><td>事業内容</td><td>基板分割機の販売・サポート</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="reveal">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">お問い合わせ</h2>
+    <div class="teal-divider"></div>
+    <p class="section-desc">製品に関するご質問・機種選定のご相談はお気軽にどうぞ。</p>
+  </div>
+  <div class="contact-layout">
+    <div class="contact-form reveal" id="contact-form-wrap">
+      <input type="text" id="f-name" placeholder="会社名・お名前" required>
+      <input type="email" id="f-email" placeholder="メールアドレス" required>
+      <input type="tel" id="f-tel" placeholder="電話番号">
+      <textarea id="f-message" placeholder="お問い合わせ内容（製品・機種選定・導入についてなど）" required></textarea>
+      <button class="btn-send" id="f-btn" onclick="submitForm(event)">送信する</button>
+      <p id="f-note" style="font-size:11px;color:var(--silver-mid);text-align:center;margin-top:8px;">送信後、担当者よりご連絡いたします。</p>
+      <!-- 送信完了メッセージ（非表示） -->
+      <div id="f-success" style="display:none;background:var(--teal-light);border:1px solid rgba(0,180,160,0.3);border-radius:6px;padding:24px;text-align:center;">
+        <p style="color:var(--teal-dark);font-size:15px;font-weight:500;margin-bottom:8px;">✓ 送信が完了しました</p>
+        <p style="color:var(--silver-dark);font-size:13px;">担当者よりメールにてご連絡いたします。</p>
+      </div>
+      <div id="f-error" style="display:none;background:#fff0f0;border:1px solid #ffcccc;border-radius:6px;padding:16px;text-align:center;">
+        <p style="color:#cc0000;font-size:13px;">送信に失敗しました。時間をおいて再度お試しください。</p>
+      </div>
+    </div>
+    <div class="contact-info-block reveal">
+      <div class="contact-method">
+        <p class="contact-method-label">電話でのお問い合わせ</p>
+        <p class="contact-method-value">0267-28-9853</p>
+        <p class="contact-method-sub">平日 9:00 – 17:00</p>
+      </div>
+      <div class="contact-method">
+        <p class="contact-method-label">FAX</p>
+        <p class="contact-method-value">0267-27-0931</p>
+        <p class="contact-method-sub">24時間受付</p>
+      </div>
+      <div class="contact-method">
+        <p class="contact-method-label">所在地</p>
+        <p style="font-size:14px;color:var(--charcoal);margin-top:6px;">〒384-0061<br>長野県小諸市加増一丁目１番８号</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">VELX</div>
+  <div class="footer-links">
+    <a href="#features">製品の特長</a>
+    <a href="#products">製品紹介</a>
+    <a href="#about">会社案内</a>
+    <a href="#contact">お問い合わせ</a>
+  </div>
+  <p class="footer-copy">© 2026 VELX Inc. All rights reserved.</p>
+</footer>
+
+<script>
+/* ===== FORMSPREE CONTACT FORM ===== */
+var FORMSPREE_ID = 'mrervqje';
+
+function submitForm(e) {
+  e.preventDefault();
+  var name    = document.getElementById('f-name').value.trim();
+  var email   = document.getElementById('f-email').value.trim();
+  var tel     = document.getElementById('f-tel').value.trim();
+  var message = document.getElementById('f-message').value.trim();
+
+  if (!name || !email || !message) {
+    alert('会社名・お名前、メールアドレス、お問い合わせ内容は必須です。');
+    return;
+  }
+
+  var btn = document.getElementById('f-btn');
+  btn.textContent = '送信中...';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, tel: tel, message: message })
+  })
+  .then(function(res) {
+    if (res.ok) {
+      // 成功
+      document.getElementById('f-name').style.display = 'none';
+      document.getElementById('f-email').style.display = 'none';
+      document.getElementById('f-tel').style.display = 'none';
+      document.getElementById('f-message').style.display = 'none';
+      btn.style.display = 'none';
+      document.getElementById('f-note').style.display = 'none';
+      document.getElementById('f-success').style.display = 'block';
+    } else {
+      throw new Error('送信失敗');
+    }
+  })
+  .catch(function() {
+    btn.textContent = '送信する';
+    btn.disabled = false;
+    document.getElementById('f-error').style.display = 'block';
+  });
+}
+</script>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  var logo  = document.getElementById('intro-logo');
+  var sweep = document.getElementById('sweep');
+  var iword = document.getElementById('iword');
+  var itag  = document.getElementById('itag');
+  var intro = document.getElementById('intro');
+
+  // ロゴフェードイン
+  logo.style.transform = 'translateY(16px)';
+  setTimeout(function(){
+    logo.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    logo.style.transform = 'translateY(0)';
+    logo.style.opacity = '1';
+  }, 100);
+
+  // Tealライン
+  setTimeout(function(){
+    sweep.style.transition = 'width 0.5s ease';
+    sweep.style.width = '100px';
+  }, 600);
+
+  // VELX文字
+  setTimeout(function(){
+    iword.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+    iword.style.transform = 'translateY(0)';
+    iword.style.opacity = '1';
+  }, 950);
+
+  // タグライン
+  setTimeout(function(){
+    itag.style.transition = 'opacity 0.45s ease';
+    itag.style.opacity = '1';
+  }, 1250);
+
+  // フェードアウト
+  setTimeout(function(){
+    intro.style.transition = 'opacity 0.9s ease';
+    intro.style.opacity = '0';
+    setTimeout(function(){ intro.style.display = 'none'; }, 950);
+  }, 2600);
+
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+});
+</script>
+</body>
+</html>
