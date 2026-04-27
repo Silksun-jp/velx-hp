@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELX | 基板分割機の販売・サポート</title>
+<title>VELX | 基板分割機 × ひずみ解析サポート</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
@@ -80,6 +80,17 @@
   .f-line { width: 24px; height: 2px; background: var(--teal); margin-bottom: 16px; }
 
   /* INSPECTION */
+  .inspection { background: var(--silver-faint); }
+  .inspection-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .step-item { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--silver-light); }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--teal); min-width: 36px; line-height: 1.1; }
+  .step-title { font-size: 15px; font-weight: 500; color: var(--charcoal); margin-bottom: 6px; }
+  .step-text { font-size: 13px; color: var(--silver-dark); line-height: 1.8; }
+  .insp-box { background: var(--white); border: 1px solid var(--silver-light); border-radius: 8px; padding: 48px; text-align: center; }
+  .insp-box-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--teal); letter-spacing: 3px; margin-bottom: 16px; }
+  .insp-box-text { font-size: 13px; color: var(--silver-dark); line-height: 1.9; margin-bottom: 32px; }
+  .teal-badge { display: inline-block; background: var(--teal-light); border: 1px solid rgba(0,180,160,0.3); color: var(--teal-dark); font-size: 12px; padding: 6px 16px; border-radius: 20px; letter-spacing: 1px; }
+
   /* PRODUCTS */
   .products { background: var(--silver-faint); }
   .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -166,6 +177,8 @@
     .features-grid { grid-template-columns: 1fr; }
 
     /* INSPECTION */
+    .inspection-layout { grid-template-columns: 1fr; gap: 40px; }
+
     /* PRODUCTS */
     .products-grid { grid-template-columns: 1fr; }
     .product-card:first-child { grid-column: 1; display: block; }
@@ -193,7 +206,7 @@
 <!-- INTRO -->
 <div id="intro">
   <div style="display:flex;flex-direction:column;align-items:center;">
-    <svg id="intro-logo" viewBox="427 244 91 77" style="width:160px;height:auto;opacity:0;transform:translateY(16px);">
+    <svg id="intro-logo" viewBox="427 244 91 77" style="width:100px;height:auto;opacity:0;">
       <defs>
         <linearGradient id="ig16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
           <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
@@ -211,19 +224,7 @@
       <polygon fill="#3e3a39" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
     </svg>
     <div class="intro-sweep" id="sweep"></div>
-    <div id="iword" style="opacity:0;transform:translateY(12px);margin-top:20px;">
-      <svg viewBox="520 265 220 45" style="height:52px;width:auto;">
-        <polygon fill="#3e3a39" points="517.54 273.37 517.54 306.11 527.68 306.11 527.68 273.37"/>
-        <polygon fill="#3e3a39" points="529.64 296.93 529.64 304.49 567.26 273.37 558.08 273.37"/>
-        <rect fill="#3e3a39" x="573.72" y="273.37" width="35.21" height="5.87"/>
-        <polygon fill="#3e3a39" points="583.85 300.24 583.85 289.53 603.23 289.53 603.23 283.66 583.85 283.66 573.72 283.66 573.72 289.53 573.72 300.24 573.72 306.11 583.85 306.11 623.33 306.11 623.33 300.24 583.85 300.24"/>
-        <rect fill="#3e3a39" x="641.87" y="300.24" width="37.62" height="5.87"/>
-        <rect fill="#3e3a39" x="629.77" y="273.37" width="10.13" height="32.75"/>
-        <polygon fill="#3e3a39" points="717.23 288.54 712.88 284.51 700.85 273.37 685.95 273.37 705 291.03 709.35 295.05 721.28 306.11 736.19 306.11"/>
-        <polygon fill="#3e3a39" points="735.59 273.37 726.38 273.37 714.41 283.25 718.75 287.28"/>
-        <polygon fill="#3e3a39" points="686.75 306.11 695.96 306.11 707.81 296.32 703.47 292.3"/>
-      </svg>
-    </div>
+    <div class="intro-word" id="iword">VELX</div>
     <div class="intro-tag" id="itag">Precision Board Cutting</div>
   </div>
 </div>
@@ -261,6 +262,7 @@
   <ul class="nav-links">
     <li><a href="#features">製品の特長</a></li>
     <li><a href="#products">製品紹介</a></li>
+    <li><a href="#inspection">ひずみ検証</a></li>
     <li><a href="#selection">機種選定</a></li>
     <li><a href="#about">会社案内</a></li>
     <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
@@ -272,13 +274,14 @@
   <div class="hero-teal-bar"></div>
   <p class="hero-label">Precision Board Cutting Technology</p>
   <h1 class="hero-title">基板を、<span>正確</span>に。<br>環境を、大切に。</h1>
-  <p class="hero-sub">VELXは低ストレス・高精度な基板分割機を提供します。モーター駆動なし。環境負荷なし。確かな品質だけ。</p>
+  <p class="hero-sub">VELXは低ストレス・高精度な基板分割機と、ひずみ解析によるサポートを提供します。モーター駆動なし。環境負荷なし。確かな品質だけ。</p>
   <div class="hero-actions">
     <a href="#products" class="btn-primary">製品を見る</a>
-    <a href="#contact" class="btn-outline">お問い合わせ・ご相談</a>
+    <a href="#contact" class="btn-outline">無料相談・ひずみ検証</a>
   </div>
   <div class="hero-stats">
     <div><div class="stat-num">4<span>機種</span></div><div class="stat-label">ラインナップ</div></div>
+    <div><div class="stat-num">0<span>μm</span></div><div class="stat-label">余計なひずみ</div></div>
     <div><div class="stat-num">CO<span>2</span></div><div class="stat-label">カーボンオフセット認定</div></div>
   </div>
   <div class="hero-logo-bg">
@@ -322,6 +325,12 @@
       <p class="feature-text">モーター駆動による切削カットではないため、粉塵・騒音が少なくクリーンな作業環境を実現。ランニングコストも大幅削減。</p>
     </div>
     <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00B4A0" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="f-line"></div>
+      <div class="feature-title">ひずみ解析サポート</div>
+      <p class="feature-text">お客様の基板に合わせた「ひずみ検証（V溝検証）」を実施。データに基づいた最適機種・刃角度をご提案します。</p>
+    </div>
+    <div class="feature-card">
       <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00B4A0" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
       <div class="f-line"></div>
       <div class="feature-title">豊富な機種ラインナップ</div>
@@ -342,13 +351,41 @@
   </div>
 </section>
 
+<!-- INSPECTION -->
+<section class="inspection" id="inspection">
+  <div class="inspection-layout">
+    <div class="reveal">
+      <p class="section-label">Inspection</p>
+      <h2 class="section-title">ひずみ検証<br>プロセス</h2>
+      <div class="teal-divider"></div>
+      <div>
+        <div class="step-item"><div class="step-num">01</div><div><div class="step-title">基板仕様の確認</div><p class="step-text">基板の材質・厚み・V溝形状・実装部品の位置など、詳細な仕様をヒアリングします。</p></div></div>
+        <div class="step-item"><div class="step-num">02</div><div><div class="step-title">V溝・ひずみ測定</div><p class="step-text">実際の基板を使用し、分割時に発生するひずみ量を専用機器で精密計測します。</p></div></div>
+        <div class="step-item"><div class="step-num">03</div><div><div class="step-title">刃角度・機種設定</div><p class="step-text">計測データをもとに、最適な上刃・下刃の角度と機種設定を算出します。</p></div></div>
+        <div class="step-item"><div class="step-num">04</div><div><div class="step-title">最適機種のご提案</div><p class="step-text">データに基づいた最良の機種・設定をご提案。導入後も継続サポートします。</p></div></div>
+      </div>
+    </div>
+    <div class="insp-box reveal">
+      <div class="insp-box-title">無料ひずみ検証</div>
+      <p class="insp-box-text">お客様の基板を実際にお持ちいただき、ひずみ検証を無料で実施いたします。最適な機種と設定をデータでご提案しますので、ご購入前に安心してご確認いただけます。</p>
+      <span class="teal-badge">無料・予約制</span>
+      <div style="margin-top:32px;padding-top:32px;border-top:1px solid var(--silver-light);">
+        <p style="font-size:12px;color:var(--silver-dark);margin-bottom:10px;">所在地</p>
+        <p style="font-size:14px;color:var(--charcoal);">〒384-0061<br>長野県小諸市加増１−１−８</p>
+        <p style="margin-top:16px;font-size:20px;font-family:'Bebas Neue',sans-serif;letter-spacing:3px;color:var(--teal);">0267-78-3674</p>
+        <p style="font-size:12px;color:var(--silver-dark);margin-top:4px;">平日 9:00 – 17:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="reveal">
     <p class="section-label">Product</p>
     <h2 class="section-title">製品ラインナップ</h2>
     <div class="teal-divider"></div>
-    <p class="section-desc">低ストレス・高精度な基板分割を実現する4機種をラインナップしています。</p>
+    <p class="section-desc">ひずみ解析データをバックグラウンドに開発された、精度と安全性を両立する基板カット機。</p>
   </div>
   <div class="products-grid reveal">
     <div class="product-card">
@@ -383,7 +420,7 @@
       <div class="product-body">
         <p class="product-tag">丸刃タイプ</p>
         <h3 class="product-name">上刃下刃 丸刃タイプ</h3>
-        <p class="product-desc">丸刃を採用した特殊タイプ。特定の基板形状・材質に対して高い適合性を持ちます。詳細はお問い合わせください。</p>
+        <p class="product-desc">丸刃を採用した特殊タイプ。特定の基板形状・材質に対して高い適合性を持ちます。ひずみ検証を元に最適設定をご提案します。</p>
         <a href="#contact" class="product-link">詳細・お問い合わせ</a>
       </div>
     </div>
@@ -396,11 +433,11 @@
     <p class="section-label">Selection</p>
     <h2 class="section-title">機種選定の流れ</h2>
     <div class="teal-divider"></div>
-    <p class="section-desc">基板仕様を確認しながら、お客様の用途に最適な機種をご提案します。</p>
+    <p class="section-desc">機種選択の前に基板仕様確認とひずみ測定を行い、最適な機種と設定を決定します。</p>
   </div>
   <div class="sel-flow reveal">
     <div class="flow-step"><div class="flow-num">01</div><div class="flow-title">基板仕様のご確認</div><p class="flow-text">材質・板厚・V溝形状・実装状況をヒアリング</p><span class="flow-arrow">›</span></div>
-    <div class="flow-step"><div class="flow-num">02</div><div class="flow-title">用途・環境の確認</div><p class="flow-text">ライン構成・量産規模・自動化の要否を確認</p><span class="flow-arrow">›</span></div>
+    <div class="flow-step"><div class="flow-num">02</div><div class="flow-title">ひずみ測定</div><p class="flow-text">実基板を用いた精密なひずみ計測を実施</p><span class="flow-arrow">›</span></div>
     <div class="flow-step"><div class="flow-num">03</div><div class="flow-title">刃角度・機種設定</div><p class="flow-text">データ解析により最適な刃の角度と機種を決定</p><span class="flow-arrow">›</span></div>
     <div class="flow-step"><div class="flow-num">04</div><div class="flow-title">導入・サポート</div><p class="flow-text">導入後も継続的なサポートで安心運用</p></div>
   </div>
@@ -413,21 +450,19 @@
       <p class="section-label">About Us</p>
       <h2 class="section-title">会社案内</h2>
       <div class="teal-divider"></div>
-      <div class="about-highlight"><p>高精度な基板分割機の販売・サポートを通じて、製造現場の品質向上と持続可能な生産に貢献します。</p></div>
-      <p class="about-text">長野県小諸市を拠点に、基板分割機の販売・サポートを行っています。お客様の基板に最適な機種をデータに基づいてご提案し、導入後も長期にわたるサポートを提供します。</p>
+      <div class="about-highlight"><p>ひずみ測定による基板カット機環境のサポートを通じて、製造現場の品質向上と持続可能な生産に貢献します。</p></div>
+      <p class="about-text">長野県小諸市を拠点に、基板分割機の販売・サポートおよびウェルネス関連商品の企画・開発・販売を行っています。お客様の基板に最適な機種をデータに基づいてご提案し、導入後も長期にわたるサポートを提供します。</p>
       <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:8px;">お問い合わせ・相談</a>
     </div>
     <div class="reveal">
       <table class="about-table">
         <tr><td>社名</td><td>VELX株式会社</td></tr>
-        <tr><td>所在地</td><td>〒384-0061<br>長野県小諸市加増一丁目１番８号</td></tr>
-        <tr><td>電話</td><td>0267-28-9853</td></tr>
-        <tr><td>FAX</td><td>0267-27-0931</td></tr>
-        <tr><td>メール</td><td>info@velx.co.jp</td></tr>
+        <tr><td>所在地</td><td>〒384-0061<br>長野県小諸市加増１−１−８</td></tr>
+        <tr><td>電話</td><td>0267-78-3674</td></tr>
+        <tr><td>FAX</td><td>0267-78-5074</td></tr>
         <tr><td>代表者</td><td>髙橋桃絵</td></tr>
         <tr><td>設立</td><td>2026年4月</td></tr>
-        <tr><td>資本金</td><td>200万円</td></tr>
-        <tr><td>事業内容</td><td>基板分割機の販売・サポート</td></tr>
+        <tr><td>事業内容</td><td>基板分割機の販売・ひずみ測定サポート</td></tr>
       </table>
     </div>
   </div>
@@ -439,40 +474,32 @@
     <p class="section-label">Contact</p>
     <h2 class="section-title">お問い合わせ</h2>
     <div class="teal-divider"></div>
-    <p class="section-desc">製品に関するご質問・機種選定のご相談はお気軽にどうぞ。</p>
+    <p class="section-desc">ひずみ検証・機種選定のご相談はお気軽にどうぞ。無料でご対応いたします。</p>
   </div>
   <div class="contact-layout">
-    <div class="contact-form reveal" id="contact-form-wrap">
-      <input type="text" id="f-name" placeholder="会社名・お名前" required>
-      <input type="email" id="f-email" placeholder="メールアドレス" required>
-      <input type="tel" id="f-tel" placeholder="電話番号">
-      <textarea id="f-message" placeholder="お問い合わせ内容（製品・機種選定・導入についてなど）" required></textarea>
-      <button class="btn-send" id="f-btn" onclick="submitForm(event)">送信する</button>
-      <p id="f-note" style="font-size:11px;color:var(--silver-mid);text-align:center;margin-top:8px;">送信後、担当者よりご連絡いたします。</p>
-      <!-- 送信完了メッセージ（非表示） -->
-      <div id="f-success" style="display:none;background:var(--teal-light);border:1px solid rgba(0,180,160,0.3);border-radius:6px;padding:24px;text-align:center;">
-        <p style="color:var(--teal-dark);font-size:15px;font-weight:500;margin-bottom:8px;">✓ 送信が完了しました</p>
-        <p style="color:var(--silver-dark);font-size:13px;">担当者よりメールにてご連絡いたします。</p>
-      </div>
-      <div id="f-error" style="display:none;background:#fff0f0;border:1px solid #ffcccc;border-radius:6px;padding:16px;text-align:center;">
-        <p style="color:#cc0000;font-size:13px;">送信に失敗しました。時間をおいて再度お試しください。</p>
-      </div>
-    </div>
     <div class="contact-info-block reveal">
       <div class="contact-method">
         <p class="contact-method-label">電話でのお問い合わせ</p>
-        <p class="contact-method-value">0267-28-9853</p>
+        <p class="contact-method-value">0267-78-3674</p>
         <p class="contact-method-sub">平日 9:00 – 17:00</p>
       </div>
       <div class="contact-method">
         <p class="contact-method-label">FAX</p>
-        <p class="contact-method-value">0267-27-0931</p>
+        <p class="contact-method-value">0267-78-5074</p>
         <p class="contact-method-sub">24時間受付</p>
       </div>
       <div class="contact-method">
         <p class="contact-method-label">所在地</p>
-        <p style="font-size:14px;color:var(--charcoal);margin-top:6px;">〒384-0061<br>長野県小諸市加増一丁目１番８号</p>
+        <p style="font-size:14px;color:var(--charcoal);margin-top:6px;">〒384-0061<br>長野県小諸市加増１−１−８</p>
       </div>
+    </div>
+    <div class="contact-form reveal">
+      <input type="text" placeholder="会社名・お名前">
+      <input type="email" placeholder="メールアドレス">
+      <input type="tel" placeholder="電話番号">
+      <textarea placeholder="お問い合わせ内容（機種・基板仕様・ひずみ検証のご希望など）"></textarea>
+      <button class="btn-send">送信する</button>
+      <p style="font-size:11px;color:var(--silver-mid);text-align:center;margin-top:8px;">送信後、担当者よりご連絡いたします。</p>
     </div>
   </div>
 </section>
@@ -483,58 +510,12 @@
   <div class="footer-links">
     <a href="#features">製品の特長</a>
     <a href="#products">製品紹介</a>
+    <a href="#inspection">ひずみ検証</a>
     <a href="#about">会社案内</a>
     <a href="#contact">お問い合わせ</a>
   </div>
   <p class="footer-copy">© 2026 VELX Inc. All rights reserved.</p>
 </footer>
-
-<script>
-/* ===== FORMSPREE CONTACT FORM ===== */
-var FORMSPREE_ID = 'mrervqje';
-
-function submitForm(e) {
-  e.preventDefault();
-  var name    = document.getElementById('f-name').value.trim();
-  var email   = document.getElementById('f-email').value.trim();
-  var tel     = document.getElementById('f-tel').value.trim();
-  var message = document.getElementById('f-message').value.trim();
-
-  if (!name || !email || !message) {
-    alert('会社名・お名前、メールアドレス、お問い合わせ内容は必須です。');
-    return;
-  }
-
-  var btn = document.getElementById('f-btn');
-  btn.textContent = '送信中...';
-  btn.disabled = true;
-
-  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ name: name, email: email, tel: tel, message: message })
-  })
-  .then(function(res) {
-    if (res.ok) {
-      // 成功
-      document.getElementById('f-name').style.display = 'none';
-      document.getElementById('f-email').style.display = 'none';
-      document.getElementById('f-tel').style.display = 'none';
-      document.getElementById('f-message').style.display = 'none';
-      btn.style.display = 'none';
-      document.getElementById('f-note').style.display = 'none';
-      document.getElementById('f-success').style.display = 'block';
-    } else {
-      throw new Error('送信失敗');
-    }
-  })
-  .catch(function() {
-    btn.textContent = '送信する';
-    btn.disabled = false;
-    document.getElementById('f-error').style.display = 'block';
-  });
-}
-</script>
 
 <script>
 window.addEventListener('DOMContentLoaded', function() {
@@ -555,7 +536,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Tealライン
   setTimeout(function(){
     sweep.style.transition = 'width 0.5s ease';
-    sweep.style.width = '160px';
+    sweep.style.width = '100px';
   }, 600);
 
   // VELX文字
