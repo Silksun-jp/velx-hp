@@ -1232,79 +1232,144 @@ footer {
 </section>
 
 <!-- INSPECTION -->
-<section id="inspection">
-  <div class="reveal" style="transition-delay:0.1s">
+<!-- INSPECTION -->
+<section id="inspection" style="background:var(--white);padding:96px 80px;">
+  <div class="reveal">
     <div class="section-label">INSPECTION</div>
     <h2 class="section-h2">ひずみの検証</h2>
     <div class="section-divider"></div>
     <p class="section-lead">
-      お客様の基板に合わせて「ひずみの検証（V溝の検証）」を行い、最適な機種・刃の角度設定をご提案いたします。サンプル基板を送付いただければ、基板V溝仕様検証とひずみ測定・データ作成を実施します。
+      サンプル基板を基に、基板V溝仕様検証とひずみ測定・データ作成を行います。最適な機種・刃の角度設定をご提案いたします。
     </p>
-    <div class="insp-steps">
-      <div class="insp-step">
-        <div class="insp-step-num">01</div>
-        <div>
-          <div class="insp-step-title">サンプル基板の送付</div>
-          <p class="insp-step-body">お客様よりサンプル基板をご送付いただきます。実際に使用される基板での検証となるため、より精度の高いデータが得られます。</p>
+  </div>
+
+  <!-- メイン画像 -->
+  <div class="reveal" style="margin-top:48px;transition-delay:0.1s">
+    <img src="https://moajapansupport.com/files/libs/434/202307201717555816.png" alt="ひずみの検証" style="width:100%;max-width:900px;display:block;margin:0 auto;border:1px solid var(--silver);border-radius:2px;">
+  </div>
+
+  <!-- V溝仕様の重要性 -->
+  <div style="margin-top:72px;" class="reveal" style="transition-delay:0.15s">
+    <div style="border-left:3px solid var(--teal);padding-left:20px;margin-bottom:32px;">
+      <h3 style="font-family:'Josefin Sans',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.06em;color:var(--black);margin-bottom:4px;">V溝仕様の重要性について（FR4の場合）</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <p style="font-size:0.9rem;line-height:1.9;color:var(--dark-gray);">
+          部品にかかる応力や刃の耐久性は、V溝の仕様が大きく影響します。<br><br>
+          スプリッター方式は、部品の距離に比例して応力は下がっていきますが、V溝の精度が悪い場合やズレがあると刃先が変形し、応力も増します。また、刃の欠けの要因にもなります。
+        </p>
+        <div style="margin-top:24px;padding:20px 24px;background:var(--teal-light);border-radius:2px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;color:var(--teal-dark);margin-bottom:12px;">▼ きれいなV溝とは（シングル機種の場合）</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--dark-gray);">
+              <span style="width:8px;height:8px;background:var(--teal);border-radius:50%;flex-shrink:0;"></span>
+              精度の良いV溝で残厚 <strong>0.5以下</strong>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--dark-gray);">
+              <span style="width:8px;height:8px;background:var(--teal);border-radius:50%;flex-shrink:0;"></span>
+              V溝角度 <strong>40度以上</strong>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="insp-step">
-        <div class="insp-step-num">02</div>
-        <div>
-          <div class="insp-step-title">V溝仕様の検証</div>
-          <p class="insp-step-body">基板のV溝形状・深さ・残厚などを測定・検証。基板素材の変化や部品の高密度化に応じた分析を行います。</p>
+      <div>
+        <img src="https://moajapansupport.com/files/libs/362/202307181620164954.png" alt="きれいなV溝参考写真（FR4）" style="width:100%;border:1px solid var(--silver);border-radius:2px;">
+        <p style="font-size:0.75rem;color:var(--mid-gray);text-align:center;margin-top:8px;">きれいなV溝参考写真（FR4）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 精度の悪いV溝の例 -->
+  <div style="margin-top:72px;" class="reveal">
+    <div style="border-left:3px solid #c0392b;padding-left:20px;margin-bottom:32px;">
+      <h3 style="font-family:'Josefin Sans',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.06em;color:var(--black);">精度の悪いV溝の例（FR4の場合）</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div style="background:var(--off-white);border:1px solid var(--silver);border-radius:2px;overflow:hidden;">
+        <img src="https://moajapansupport.com/files/libs/359/20230718161930815.png" alt="V溝上下ズレあり" style="width:100%;display:block;">
+        <div style="padding:14px 16px;">
+          <div style="font-size:0.8rem;font-weight:700;color:#c0392b;margin-bottom:4px;">✕ V溝上下ズレあり</div>
+          <p style="font-size:0.75rem;color:var(--dark-gray);line-height:1.6;">表裏のV溝がズレると刃先に余分な力がかかり、刃の変形・欠けの原因になります。</p>
         </div>
       </div>
-      <div class="insp-step">
-        <div class="insp-step-num">03</div>
-        <div>
-          <div class="insp-step-title">ひずみ測定・データ作成</div>
-          <p class="insp-step-body">実際のカット時に基板にかかるひずみを測定しデータ化。部品へのストレスを数値で把握します。</p>
+      <div style="background:var(--off-white);border:1px solid var(--silver);border-radius:2px;overflow:hidden;">
+        <img src="https://moajapansupport.com/files/libs/360/202307181619398370.png" alt="V溝残厚が厚い" style="width:100%;display:block;">
+        <div style="padding:14px 16px;">
+          <div style="font-size:0.8rem;font-weight:700;color:#c0392b;margin-bottom:4px;">✕ V溝残厚が厚い</div>
+          <p style="font-size:0.75rem;color:var(--dark-gray);line-height:1.6;">残厚が厚いと分割時の抵抗が増大し、基板・部品への応力が大きくなります。</p>
         </div>
       </div>
-      <div class="insp-step">
-        <div class="insp-step-num">04</div>
-        <div>
-          <div class="insp-step-title">最適機種・設定のご提案</div>
-          <p class="insp-step-body">検証データをもとに、お客様の基板に最適な機種・上刃と下刃の角度・機種設定をご提案。導入後の安心につながります。</p>
+      <div style="background:var(--off-white);border:1px solid var(--silver);border-radius:2px;overflow:hidden;">
+        <img src="https://moajapansupport.com/files/libs/361/202307181619505357.png" alt="角度が狭い" style="width:100%;display:block;">
+        <div style="padding:14px 16px;">
+          <div style="font-size:0.8rem;font-weight:700;color:#c0392b;margin-bottom:4px;">✕ 角度が狭い</div>
+          <p style="font-size:0.75rem;color:var(--dark-gray);line-height:1.6;">V溝角度が40度未満だと刃の食い込みが深くなり、ひずみが増大します。</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="reveal" style="transition-delay:0.25s">
-    <div class="insp-visual">
-      <div style="font-family:'Josefin Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;color:var(--mid-gray);text-transform:uppercase;margin-bottom:16px;">クラックの発生原因</div>
-      <table class="crack-table">
-        <thead>
-          <tr><th>分割方法</th><th>発生する問題</th><th>リスク</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>手割り</strong></td>
-            <td>両支点間で曲がってクラックが入る</td>
-            <td class="risk-high">高</td>
-          </tr>
-          <tr>
-            <td><strong>治具</strong></td>
-            <td>固定側と支点の間にクラックが入る</td>
-            <td class="risk-high">高</td>
-          </tr>
-          <tr>
-            <td><strong>上下刃交差方式</strong></td>
-            <td>ねじれ・ひねりによる部品ストレス</td>
-            <td class="risk-high">中〜高</td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--teal)">VELX方式</strong></td>
-            <td>非交差設計・リニアスライスで横揺れなし</td>
-            <td class="risk-low">低</td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="margin-top:16px;font-size:0.75rem;color:var(--mid-gray);line-height:1.7;">
-        チップ積層セラミックコンデンサなど近年の部品は鉛フリーで脆くなっています。基板がたわんだ際のクラックは、はんだの盛り量が多いほど生じやすく、実装後の基板分割が最も重要な工程となっています。
+
+  <!-- 測定例 -->
+  <div style="margin-top:72px;" class="reveal">
+    <div style="border-left:3px solid var(--teal);padding-left:20px;margin-bottom:32px;">
+      <h3 style="font-family:'Josefin Sans',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.06em;color:var(--black);">測定例</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+      <div>
+        <div style="background:var(--off-white);padding:20px 24px;border:1px solid var(--silver);border-radius:2px;margin-bottom:24px;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:0.85rem;color:var(--dark-gray);"><span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--mid-gray);display:inline-block;width:80px;">測定器</span>KEYENCE / NR-ST04</div>
+            <div style="font-size:0.85rem;color:var(--dark-gray);"><span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--mid-gray);display:inline-block;width:80px;">ゲージ</span>2mm 1mコード付きゲージ</div>
+            <div style="font-size:0.85rem;color:var(--dark-gray);"><span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--mid-gray);display:inline-block;width:80px;">測定位置</span>V溝際より3mm、3方向（垂直・45度・平行）</div>
+          </div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:0.78rem;">
+          <thead>
+            <tr style="background:var(--black);color:white;">
+              <th style="padding:10px 12px;text-align:left;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;">チャンネル</th>
+              <th style="padding:10px 12px;text-align:right;">最大値 (μST)</th>
+              <th style="padding:10px 12px;text-align:right;">最小値 (μST)</th>
+              <th style="padding:10px 12px;text-align:right;">P-P値</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--silver);">
+              <td style="padding:10px 12px;color:var(--dark-gray);">CH01（垂直）</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;font-weight:700;color:var(--teal);">283.2</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;">6.0</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;">277.2</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--silver);background:var(--off-white);">
+              <td style="padding:10px 12px;color:var(--dark-gray);">CH02（45度）</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;font-weight:700;color:#c0392b;">-168.3</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;">-15.3</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;">153.0</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--silver);">
+              <td style="padding:10px 12px;color:var(--dark-gray);">CH03（平行）</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;font-weight:700;color:#c0392b;">-303.3</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;">-19.0</td>
+              <td style="padding:10px 12px;text-align:right;font-family:'Space Mono',monospace;">284.3</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px;font-size:0.75rem;color:var(--mid-gray);line-height:1.6;">※ 単位：μST（マイクロストレイン）</p>
+      </div>
+      <div>
+        <img src="https://moajapansupport.com/files/libs/276/201908081520038207.png" alt="測定例グラフ" style="width:100%;border:1px solid var(--silver);border-radius:2px;">
+        <p style="font-size:0.75rem;color:var(--mid-gray);text-align:center;margin-top:8px;">ひずみ測定波形（実測データ）</p>
       </div>
     </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="margin-top:56px;padding:32px 40px;background:var(--black);border-radius:2px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;" class="reveal">
+    <div>
+      <div style="font-family:'Josefin Sans',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.06em;color:var(--white);margin-bottom:6px;">ひずみ測定・V溝検証のご依頼</div>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.6;">サンプル基板をお送りいただければ、無料で検証・データ作成を実施します。</p>
+    </div>
+    <a href="#contact" class="btn-primary">お問い合わせはこちら</a>
   </div>
 </section>
 
