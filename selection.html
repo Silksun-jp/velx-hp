@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="基板仕様の確認・ひずみ測定から最適な基板分割機を選定します。">
+<title>機種選定について | VELX株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav id="nav">
+<a href="index.html" class="nav-logo">
+    <svg class="velx-logo-h" viewBox="427 244 310 77" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ng16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+        <linearGradient id="ng11" x1="475.02" y1="277.21" x2="517.99" y2="277.21" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+      </defs>
+      <polygon fill="#3e3a39" points="461.56 261.39 438.46 261.39 427.7 244.34 450.81 244.34"/>
+      <polygon fill="url(#ng16)" points="483.06 308.39 475.62 320.21 442.32 267.49 450.93 267.49 467.56 293.83 470.71 288.85"/>
+      <path fill="url(#ng11)" d="M517.99,252.87l-30.63,48.68-.06-.1-12.28-19.42,13.72-21.69c.63-1,.86-2.21.63-3.37l-.82-4.1h29.44Z"/>
+      <polygon fill="#3e3a39" points="472.91 278.69 475.03 282.03 470.71 288.85 464.3 278.69"/>
+      <polygon fill="#3e3a39" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
+      <polygon fill="#3e3a39" points="517.54 273.37 517.54 306.11 527.68 306.11 527.68 273.37"/>
+      <polygon fill="#3e3a39" points="529.64 296.93 529.64 304.49 567.26 273.37 558.08 273.37"/>
+      <rect fill="#3e3a39" x="573.72" y="273.37" width="35.21" height="5.87"/>
+      <polygon fill="#3e3a39" points="583.85 300.24 583.85 289.53 603.23 289.53 603.23 283.66 583.85 283.66 573.72 283.66 573.72 289.53 573.72 300.24 573.72 306.11 583.85 306.11 623.33 306.11 623.33 300.24 583.85 300.24"/>
+      <rect fill="#3e3a39" x="641.87" y="300.24" width="37.62" height="5.87"/>
+      <rect fill="#3e3a39" x="629.77" y="273.37" width="10.13" height="32.75"/>
+      <polygon fill="#3e3a39" points="717.23 288.54 712.88 284.51 700.85 273.37 685.95 273.37 705 291.03 709.35 295.05 721.28 306.11 736.19 306.11"/>
+      <polygon fill="#3e3a39" points="735.59 273.37 726.38 273.37 714.41 283.25 718.75 287.28"/>
+      <polygon fill="#3e3a39" points="686.75 306.11 695.96 306.11 707.81 296.32 703.47 292.3"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html">製品の特長</a></li>
+    <li class="dd"><a href="products.html">製品紹介</a>
+      <div class="dd-menu">
+        <a href="products-single.html">シングル機種（手動）</a>
+        <a href="products-motor.html">シングル機種（モーター付き）</a>
+        <a href="products-double.html">ダブル機種</a>
+        <a href="products-disc.html">上刃下刃 丸刃タイプ</a>
+        <a href="products-splitter.html">スプリッター</a>
+      </div>
+    </li>
+    <li><a href="selection.html">機種選定</a></li>
+    <li><a href="strain.html">ひずみの検証</a></li>
+    <li><a href="blade.html">刃の交換注意点</a></li>
+    <li><a href="index.html#about">会社案内</a></li>
+    <li><a href="index.html#contact" class="nav-contact-btn">お問い合わせ</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="features.html">製品の特長</a>
+  <a href="products.html">製品紹介</a>
+  <a href="products-single.html">　└ シングル機種（手動）</a>
+  <a href="products-motor.html">　└ モーター付き</a>
+  <a href="products-double.html">　└ ダブル機種</a>
+  <a href="products-disc.html">　└ 丸刃タイプ</a>
+  <a href="products-splitter.html">　└ スプリッター</a>
+  <a href="selection.html">機種選定</a>
+  <a href="strain.html">ひずみの検証</a>
+  <a href="blade.html">刃の交換注意点</a>
+  <a href="index.html#about">会社案内</a>
+  <a href="index.html#contact">お問い合わせ</a>
+</div>
+
+<section id="selection" class="page-pad">
+  <div class="reveal">
+    <div class="section-label">SELECTION</div>
+    <h2 class="section-h2">機種選定について</h2>
+    <div class="section-divider"></div>
+    <p class="section-lead">
+      機種選択の前に基板仕様確認とひずみ測定で、基板にあった上刃・下刃の角度および機種設定を行います。適切な機種選定が、長期的な品質安定の鍵です。
+    </p>
+  </div>
+  <div class="selection-flow reveal" style="transition-delay:0.2s">
+    <div class="sel-step">
+      <div class="sel-step-circle">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <div class="sel-step-label">STEP 01</div>
+      <div class="sel-step-title">基板仕様の確認</div>
+      <p class="sel-step-body">素材・V溝仕様・部品配置・基板サイズを確認。使用環境も含めてヒアリングします。</p>
+    </div>
+    <div class="sel-step">
+      <div class="sel-step-circle">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/>
+        </svg>
+      </div>
+      <div class="sel-step-label">STEP 02</div>
+      <div class="sel-step-title">ひずみ測定</div>
+      <p class="sel-step-body">サンプル基板のV溝検証・ひずみ測定を実施。数値データに基づく客観的な評価を行います。</p>
+    </div>
+    <div class="sel-step">
+      <div class="sel-step-circle">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </div>
+      <div class="sel-step-label">STEP 03</div>
+      <div class="sel-step-title">機種・刃の選定</div>
+      <p class="sel-step-body">シングル・ダブル・丸刃タイプから最適な機種を選定。刃の角度・テーブル設定も決定します。</p>
+    </div>
+    <div class="sel-step">
+      <div class="sel-step-circle">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <polyline points="16,3 21,3 21,8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21,16 21,21 16,21"/><line x1="15" y1="15" x2="21" y2="21"/>
+        </svg>
+      </div>
+      <div class="sel-step-label">STEP 04</div>
+      <div class="sel-step-title">導入・アフターサポート</div>
+      <p class="sel-step-body">導入後の操作トレーニング・調整・メンテナンスまで国内で対応。長期安定稼働をサポートします。</p>
+    </div>
+  </div>
+  <div class="selection-note reveal" style="transition-delay:0.35s">
+    <p><strong>カット時の注意点：</strong>基板の左右バランスを取ることが最も重要なポイントです。基板に余分な力を加えないために、基板を右テーブルに置かず軽く右指で支えます。基板とテーブルの距離は支えやすい状態が最適です。</p>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="margin-bottom:12px">
+        <svg class="velx-logo-h" viewBox="427 244 310 77" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="fg16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#888"/><stop offset=".36" stop-color="#999"/>
+              <stop offset=".95" stop-color="#aaa"/><stop offset="1" stop-color="#bbb"/>
+            </linearGradient>
+            <linearGradient id="fg11" x1="475.02" y1="277.21" x2="517.99" y2="277.21" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#888"/><stop offset=".36" stop-color="#999"/>
+              <stop offset=".95" stop-color="#aaa"/><stop offset="1" stop-color="#bbb"/>
+            </linearGradient>
+          </defs>
+          <polygon fill="#aaa" points="461.56 261.39 438.46 261.39 427.7 244.34 450.81 244.34"/>
+          <polygon fill="url(#fg16)" points="483.06 308.39 475.62 320.21 442.32 267.49 450.93 267.49 467.56 293.83 470.71 288.85"/>
+          <path fill="url(#fg11)" d="M517.99,252.87l-30.63,48.68-.06-.1-12.28-19.42,13.72-21.69c.63-1,.86-2.21.63-3.37l-.82-4.1h29.44Z"/>
+          <polygon fill="#aaa" points="472.91 278.69 475.03 282.03 470.71 288.85 464.3 278.69"/>
+          <polygon fill="#aaa" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
+          <polygon fill="#aaa" points="517.54 273.37 517.54 306.11 527.68 306.11 527.68 273.37"/>
+          <polygon fill="#aaa" points="529.64 296.93 529.64 304.49 567.26 273.37 558.08 273.37"/>
+          <rect fill="#aaa" x="573.72" y="273.37" width="35.21" height="5.87"/>
+          <polygon fill="#aaa" points="583.85 300.24 583.85 289.53 603.23 289.53 603.23 283.66 583.85 283.66 573.72 283.66 573.72 289.53 573.72 300.24 573.72 306.11 583.85 306.11 623.33 306.11 623.33 300.24 583.85 300.24"/>
+          <rect fill="#aaa" x="641.87" y="300.24" width="37.62" height="5.87"/>
+          <rect fill="#aaa" x="629.77" y="273.37" width="10.13" height="32.75"/>
+          <polygon fill="#aaa" points="717.23 288.54 712.88 284.51 700.85 273.37 685.95 273.37 705 291.03 709.35 295.05 721.28 306.11 736.19 306.11"/>
+          <polygon fill="#aaa" points="735.59 273.37 726.38 273.37 714.41 283.25 718.75 287.28"/>
+          <polygon fill="#aaa" points="686.75 306.11 695.96 306.11 707.81 296.32 703.47 292.3"/>
+        </svg>
+        <div style="font-size:0.6rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-top:4px;">株式会社</div>
+      </div>
+      <p class="footer-tagline">高精度基板分割機の輸入・販売・サポート。上刃と下刃が交差しない独自設計で、実装基板を低ストレスで精密分割します。</p>
+    </div>
+    <div>
+      <div class="footer-col-title">NAVIGATION</div>
+      <ul class="footer-links">
+        <li><a href="features.html">製品の特長</a></li>
+        <li><a href="products.html">製品紹介</a></li><li><a href="products-splitter.html">スプリッター</a></li><li><a href="strain.html">ひずみの検証</a></li><li><a href="blade.html">刃の交換注意点</a></li>
+        <li><a href="selection.html">機種選定について</a></li>
+        <li><a href="index.html#about">会社案内</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">CONTACT</div>
+      <ul class="footer-links">
+        <li><a href="tel:0267-28-9853">TEL: 0267-28-9853</a></li>
+        <li><a href="mailto:info@velx.co.jp">info@velx.co.jp</a></li>
+        <li style="color:rgba(255,255,255,0.25);font-size:0.75rem;">長野県小諸市加増1-1-8</li>
+        <li style="color:rgba(255,255,255,0.25);font-size:0.75rem;">月〜金 9:00〜17:30</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 VELX株式会社. All Rights Reserved.</span>
+    <span class="footer-copy" style="opacity:0.5">velx.co.jp</span>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
