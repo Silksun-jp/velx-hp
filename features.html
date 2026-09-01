@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="上下刃非交差構造・リニアスライス方式など、VELXの基板分割機の特長。">
+<meta name="description" content="上下刃非交差構造・リニアスライス方式・クラックの発生原因など、VELXの基板分割機の特長。">
 <title>製品の特長 | VELX株式会社</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,6 +159,91 @@
     </div>
   </div>
 </section>
+<section id="crack" style="padding:80px 8vw;background:var(--off-white);">
+  <div class="reveal">
+    <div class="section-label">CRACK CAUSE</div>
+    <h2 class="section-h2">クラックの発生原因について</h2>
+    <div class="section-divider"></div>
+    <p class="section-lead">チップ積層セラミックコンデンサなどを実装する近年の基板は、素材もV溝の形状も多様化しており、部品も鉛フリー化で脆くなっています。基板実装後に機械的ストレスで基板がたわむと、下記のようなクラックが生じます。</p>
+  </div>
+
+  <div class="two-col reveal" style="margin-top:36px;">
+    <div class="dwg-card">
+      <div class="dwg-head"><span class="dwg-model">手割り</span><span class="dwg-note">両支点間で曲がってしまいクラックが入る</span></div>
+      <svg viewBox="0 0 460 200" style="width:100%;max-width:440px;display:block;margin:0 auto;" role="img" aria-label="手割りによるクラック">
+        <path d="M30 100 Q230 150 430 100" fill="none" stroke="#444" stroke-width="10" stroke-linecap="round"/>
+        <path d="M222 118 L230 131 L238 118" fill="none" stroke="#c62828" stroke-width="3"/>
+        <path d="M230 131 L227 145 M230 131 L234 143" stroke="#c62828" stroke-width="2.5" fill="none"/>
+        <path d="M55 70 Q45 88 60 96" fill="none" stroke="#00A896" stroke-width="4" marker-end="url(#ah1)"/>
+        <path d="M405 70 Q415 88 400 96" fill="none" stroke="#00A896" stroke-width="4" marker-end="url(#ah1)"/>
+        <circle cx="40" cy="102" r="7" fill="#888"/>
+        <circle cx="420" cy="102" r="7" fill="#888"/>
+        <text x="24" y="135" font-size="14" fill="#666">支点</text>
+        <text x="404" y="135" font-size="14" fill="#666">支点</text>
+        <text x="250" y="160" font-size="14" fill="#c62828">クラック</text>
+        <defs><marker id="ah1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#00A896"/></marker></defs>
+      </svg>
+    </div>
+    <div class="dwg-card">
+      <div class="dwg-head"><span class="dwg-model">冶具</span><span class="dwg-note">固定側と支点の間にクラックが入る</span></div>
+      <svg viewBox="0 0 460 200" style="width:100%;max-width:440px;display:block;margin:0 auto;" role="img" aria-label="冶具によるクラック">
+        <rect x="20" y="70" width="90" height="60" fill="#d8d8d8" stroke="#666"/>
+        <text x="32" y="105" font-size="14" fill="#555">固定側</text>
+        <path d="M110 100 L300 100 L430 128" fill="none" stroke="#444" stroke-width="10" stroke-linecap="round"/>
+        <path d="M300 110 L293 87 L307 87 Z" fill="#888"/>
+        <text x="282" y="75" font-size="14" fill="#666">支点</text>
+        <path d="M400 60 Q416 84 404 100" fill="none" stroke="#00A896" stroke-width="4" marker-end="url(#ah2)"/>
+        <path d="M210 95 L206 78 M210 95 L215 80" stroke="#c62828" stroke-width="2.5" fill="none"/>
+        <text x="172" y="62" font-size="14" fill="#c62828">クラック</text>
+        <defs><marker id="ah2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#00A896"/></marker></defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="subh">基板のたわみ（他の挿入部品の取り付け、基板分割）</div>
+  <div class="two-col" style="align-items:center;">
+    <div>
+      <p class="crk-p">基板ブレイク等で基板がたわんだ場合、図のようなクラックが生じます。クラックは、はんだの盛り量が多いほど生じやすくなります。</p>
+      <p class="crk-p" style="margin-top:12px;">チップ部品の端子部（はんだフィレットの根元）に応力が集中し、部品内部へ斜めにクラックが進行します。目視では確認しにくく、後工程・市場での不具合の原因になります。</p>
+    </div>
+    <div class="dwg-card reveal">
+      <svg viewBox="0 0 560 250" style="width:100%;max-width:520px;display:block;margin:0 auto;" role="img" aria-label="基板のたわみによるチップ部品のクラック">
+        <path d="M20 190 Q280 150 540 190" fill="none" stroke="#9aa0a6" stroke-width="18"/>
+        <text x="255" y="228" font-size="15" fill="#666">基板のたわみ</text>
+        <rect x="185" y="98" width="190" height="46" fill="#efe9dc" stroke="#666"/>
+        <rect x="173" y="98" width="24" height="46" fill="#c9c9c9" stroke="#666"/>
+        <rect x="363" y="98" width="24" height="46" fill="#c9c9c9" stroke="#666"/>
+        <path d="M173 144 L143 160 L197 160 Z" fill="#bfc7cc" stroke="#666" stroke-width="1"/>
+        <path d="M387 144 L363 160 L417 160 Z" fill="#bfc7cc" stroke="#666" stroke-width="1"/>
+        <text x="238" y="128" font-size="15" fill="#555">チップ部品</text>
+        <text x="118" y="180" font-size="13" fill="#666">はんだ</text>
+        <text x="398" y="180" font-size="13" fill="#666">はんだ</text>
+        <path d="M197 144 L212 118 M197 144 L206 112" stroke="#c62828" stroke-width="2.5" fill="none"/>
+        <path d="M363 144 L348 118 M363 144 L354 112" stroke="#c62828" stroke-width="2.5" fill="none"/>
+        <text x="230" y="88" font-size="14" fill="#c62828">クラック</text>
+        <path d="M225 82 L210 108" stroke="#c62828" stroke-width="1" fill="none"/>
+        <path d="M312 82 L348 110" stroke="#c62828" stroke-width="1" fill="none"/>
+        <path d="M50 150 Q38 168 54 178" fill="none" stroke="#00A896" stroke-width="4" marker-end="url(#ah3)"/>
+        <path d="M510 150 Q522 168 506 178" fill="none" stroke="#00A896" stroke-width="4" marker-end="url(#ah3)"/>
+        <defs><marker id="ah3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#00A896"/></marker></defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="subh">実装基板スプリッターのリニアスライス方式</div>
+  <p class="crk-p">実装基板スプリッターのリニアスライス方式は、基板を下側直線刃で固定するため刃先の横揺れがなく安定し、上下刃を交差させずに少ない力できれいな断面のカットができます。</p>
+  <p class="crk-p" style="margin-top:12px;">安定切断の理由は、ローラー刃が浅い角度で自転しながら、進行の前後で繊維を少しずつ圧切していくことにあります。横方向にストレスが広がりにくい方式で、円周が大きいほど抵抗は軽くなります。下刃で基板全体を支えるため、中抜き基板でも基板から刃が逸れる心配がありません。</p>
+  <div class="link-row" style="margin-top:24px;">
+    <a class="link-tile" href="products-splitter.html"><div class="lt-en">SPLITTER</div><div class="lt-ja">実装基板スプリッター MS／MW</div><div class="lt-desc">機種別の仕様・外形図はこちら</div></a>
+    <a class="link-tile" href="strain.html"><div class="lt-en">VERIFICATION</div><div class="lt-ja">ひずみの検証</div><div class="lt-desc">ひずみ量の測定とマイクロクラックの検証資料</div></a>
+  </div>
+
+  <div class="subh">基板とテーブルの距離とV溝仕様について</div>
+  <p class="crk-p">基板の分割には、上で紹介したように最終分割に至るまでに様々なストレス要因があります。手割りや工具によるストレスの軽減を目的に分割機の精度を高めてきましたが、基板材質の変化や部品の高密度化が進むなか、分割機と刃の精度はもちろん、基板側のV溝仕様も重要な要因です。シンプルなカット方式で、冶具などで基板を押さえつけないこと、機械の精度、V溝の精度によって、部品にかかるストレスは軽減できます。V溝の良否条件は<a href="strain.html" style="color:var(--teal);">ひずみの検証</a>のページをご覧ください。</p>
+
+  <div class="note-box" style="margin-top:28px;"><strong>カット時の注意点：</strong>基板の左右バランスを取ることが、もっとも重要なポイントです。基板に余分な力を加えないために、基板を右テーブルに置かず、軽く右指で支えます。基板とテーブルの距離は、支えやすい状態が良いです。</div>
+</section>
+
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
