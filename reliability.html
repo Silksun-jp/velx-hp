@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="薄膜材料の専門家・小澤隆二氏の技術解説の要旨。弾性波・マイクロクラックと低ストレス分割の重要性を分かりやすく紹介。">
+<title>専門家解説：基板の分割方法と電子機器の信頼性 | VELX株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav id="nav">
+<a href="index.html" class="nav-logo">
+    <svg class="velx-logo-h" viewBox="427 244 310 77" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ng16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+        <linearGradient id="ng11" x1="475.02" y1="277.21" x2="517.99" y2="277.21" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#231815"/><stop offset=".36" stop-color="#29201e"/>
+          <stop offset=".95" stop-color="#3c3736"/><stop offset="1" stop-color="#3e3a39"/>
+        </linearGradient>
+      </defs>
+      <polygon fill="#3e3a39" points="461.56 261.39 438.46 261.39 427.7 244.34 450.81 244.34"/>
+      <polygon fill="url(#ng16)" points="483.06 308.39 475.62 320.21 442.32 267.49 450.93 267.49 467.56 293.83 470.71 288.85"/>
+      <path fill="url(#ng11)" d="M517.99,252.87l-30.63,48.68-.06-.1-12.28-19.42,13.72-21.69c.63-1,.86-2.21.63-3.37l-.82-4.1h29.44Z"/>
+      <polygon fill="#3e3a39" points="472.91 278.69 475.03 282.03 470.71 288.85 464.3 278.69"/>
+      <polygon fill="#3e3a39" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
+      <polygon fill="#3e3a39" points="517.54 273.37 517.54 306.11 527.68 306.11 527.68 273.37"/>
+      <polygon fill="#3e3a39" points="529.64 296.93 529.64 304.49 567.26 273.37 558.08 273.37"/>
+      <rect fill="#3e3a39" x="573.72" y="273.37" width="35.21" height="5.87"/>
+      <polygon fill="#3e3a39" points="583.85 300.24 583.85 289.53 603.23 289.53 603.23 283.66 583.85 283.66 573.72 283.66 573.72 289.53 573.72 300.24 573.72 306.11 583.85 306.11 623.33 306.11 623.33 300.24 583.85 300.24"/>
+      <rect fill="#3e3a39" x="641.87" y="300.24" width="37.62" height="5.87"/>
+      <rect fill="#3e3a39" x="629.77" y="273.37" width="10.13" height="32.75"/>
+      <polygon fill="#3e3a39" points="717.23 288.54 712.88 284.51 700.85 273.37 685.95 273.37 705 291.03 709.35 295.05 721.28 306.11 736.19 306.11"/>
+      <polygon fill="#3e3a39" points="735.59 273.37 726.38 273.37 714.41 283.25 718.75 287.28"/>
+      <polygon fill="#3e3a39" points="686.75 306.11 695.96 306.11 707.81 296.32 703.47 292.3"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html">製品の特長</a></li>
+    <li class="dd"><a href="products.html">製品紹介</a>
+      <div class="dd-menu">
+        <a href="products-single.html">シングル機種（手動）</a>
+        <a href="products-motor.html">シングル機種（モーター付き）</a>
+        <a href="products-double.html">ダブル機種</a>
+        <a href="products-disc.html">上刃下刃 丸刃タイプ</a>
+        <a href="products-splitter.html">スプリッター</a>
+      </div>
+    </li>
+    <li><a href="selection.html">機種選定</a></li>
+    <li class="dd"><a href="strain.html">ひずみの検証</a>
+      <div class="dd-menu">
+        <a href="strain.html">ひずみの検証データ</a>
+        <a href="reliability.html">専門家解説：分割法と信頼性</a>
+      </div>
+    </li>
+    <li><a href="blade.html">刃の交換注意点</a></li>
+    <li><a href="index.html#about">会社案内</a></li>
+    <li><a href="index.html#contact" class="nav-contact-btn">お問い合わせ</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="features.html">製品の特長</a>
+  <a href="products.html">製品紹介</a>
+  <a href="products-single.html">　└ シングル機種（手動）</a>
+  <a href="products-motor.html">　└ モーター付き</a>
+  <a href="products-double.html">　└ ダブル機種</a>
+  <a href="products-disc.html">　└ 丸刃タイプ</a>
+  <a href="products-splitter.html">　└ スプリッター</a>
+  <a href="selection.html">機種選定</a>
+  <a href="strain.html">ひずみの検証</a>
+  <a href="reliability.html">　└ 専門家解説：分割法と信頼性</a>
+  <a href="blade.html">刃の交換注意点</a>
+  <a href="index.html#about">会社案内</a>
+  <a href="index.html#contact">お問い合わせ</a>
+</div>
+
+
+<section id="reliability" class="page-pad" style="padding-left:8vw;padding-right:8vw;padding-bottom:80px;">
+  <div class="crumbs"><a href="index.html">HOME</a> ／ 専門家解説：分割法と信頼性</div>
+  <div class="reveal visible">
+    <div class="section-label">EXPERT REVIEW</div>
+    <h2 class="section-h2">基板の分割方法が、電子機器の信頼性を決める</h2>
+    <div class="section-divider"></div>
+    <p class="section-lead">「出荷検査は合格したのに、数ヶ月後に壊れる」——その原因の多くは、基板を切り分ける工程に潜んでいます。薄膜材料の専門家・小澤隆二氏による技術解説の要旨を、分かりやすくまとめました。</p>
+  </div>
+
+  <div class="note-box" style="margin-top:24px;">本ページは、小澤隆二氏（Lyuji Ozawa／L. L. Technology, consultant, NY, USA）による技術解説「電子機器の信頼性はモジュール基板の分割法に大きく依存」（MOA JAPAN配布・参考資料）の要旨を、VELX株式会社が再構成したものです。図はVELXが作成しています。</div>
+
+  <div class="subh">なぜ、分割した基板が「あとから」壊れるのか</div>
+  <p class="crk-p">スマートフォンや自動車、産業機器の中身は、大きなプリント基板の上に多数の部品を実装したあと、製品ごとの小さな基板（モジュール基板）に切り分けて作られます。小澤氏はこの<strong>「切り分ける瞬間」</strong>に着目しました。仕組みは3段階です。</p>
+
+  <div class="cat-grid" style="margin-top:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+    <div class="dwg-card">
+      <div class="dwg-head"><span class="dwg-model" style="color:var(--teal);">1</span><span class="dwg-note" style="color:var(--black);font-weight:700;">刃が触れた瞬間、衝撃波が走る</span></div>
+      <svg viewBox="0 0 300 170" style="width:100%;display:block;" role="img" aria-label="刃の接触で弾性波が発生">
+        <rect x="20" y="100" width="260" height="16" fill="#9aa0a6"/>
+        <path d="M150 30 L150 92" stroke="#444" stroke-width="8" stroke-linecap="round"/>
+        <path d="M142 92 L150 104 L158 92" fill="#444"/>
+        <path d="M160 108 q14 -12 28 0 M192 108 q10 -9 20 0 M136 108 q-14 -12 -28 0 M104 108 q-10 -9 -20 0" stroke="#00A896" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <text x="150" y="150" font-size="13" fill="#666" text-anchor="middle">衝撃が「弾性波」となって基板内を伝わる</text>
+      </svg>
+      <p class="crk-p" style="font-size:0.88rem;margin-top:10px;">分割機の刃が基板に接触した瞬間、大きな機械的衝撃が<strong>弾性波</strong>（地震の揺れと同じ性質の波）となって基板の中を端から端まで伝わります。</p>
+    </div>
+    <div class="dwg-card">
+      <div class="dwg-head"><span class="dwg-model" style="color:var(--teal);">2</span><span class="dwg-note" style="color:var(--black);font-weight:700;">チップ内部に見えないキズ</span></div>
+      <svg viewBox="0 0 300 170" style="width:100%;display:block;" role="img" aria-label="薄膜層のマイクロクラック">
+        <rect x="30" y="110" width="240" height="14" fill="#9aa0a6"/>
+        <rect x="100" y="70" width="100" height="38" fill="#efe9dc" stroke="#666"/>
+        <rect x="90" y="70" width="14" height="38" fill="#c9c9c9" stroke="#666"/>
+        <rect x="196" y="70" width="14" height="38" fill="#c9c9c9" stroke="#666"/>
+        <path d="M120 78 l6 8 l-4 7 l6 7 M172 96 l5 -8 l-3 -7" stroke="#c62828" stroke-width="2" fill="none"/>
+        <circle cx="150" cy="89" r="34" fill="none" stroke="#00A896" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="150" y="150" font-size="13" fill="#666" text-anchor="middle">薄膜層にマイクロクラック（微小亀裂）</text>
+      </svg>
+      <p class="crk-p" style="font-size:0.88rem;margin-top:10px;">コンデンサなどのチップ部品の中身は1ミクロン以下の薄膜の積み重ね。弾性波の不均一な力で、<strong>目に見えない微小な亀裂</strong>が入ります。外観も検査も正常のままです。</p>
+    </div>
+    <div class="dwg-card">
+      <div class="dwg-head"><span class="dwg-model" style="color:var(--teal);">3</span><span class="dwg-note" style="color:var(--black);font-weight:700;">使ううちに成長し、故障する</span></div>
+      <svg viewBox="0 0 300 170" style="width:100%;display:block;" role="img" aria-label="クラックの成長と故障">
+        <path d="M40 120 L110 120 L150 118 L190 110 L230 80 L260 40" stroke="#c62828" stroke-width="3" fill="none"/>
+        <path d="M40 130 L260 130" stroke="#bbb" stroke-width="1.5"/>
+        <text x="42" y="148" font-size="12" fill="#888">出荷時</text>
+        <text x="200" y="148" font-size="12" fill="#888">数日〜数ヶ月後</text>
+        <text x="216" y="30" font-size="13" fill="#c62828">故障・誤動作</text>
+        <path d="M40 60 q10 -14 20 0 q10 14 20 0" stroke="#00A896" stroke-width="2.5" fill="none"/>
+        <text x="90" y="66" font-size="12" fill="#666">通電・発熱のたびに亀裂が成長</text>
+      </svg>
+      <p class="crk-p" style="font-size:0.88rem;margin-top:10px;">電源のON/OFFや発熱のたびに亀裂は少しずつ成長し、ある限界を超えた時に薄膜が切断されて<strong>突然の機能停止・誤動作</strong>になります。時限爆弾のような故障です。</p>
+    </div>
+  </div>
+
+  <div class="warn-box reveal" style="margin-top:28px;">この故障は、部品単体の試験でも、実装直後の検査でも見つかりません。故障が「分割工程のあと」に仕込まれるためです。ハードかソフトか原因の切り分けもつかず、製品の信頼性だけが静かに失われていきます。</div>
+
+  <div class="subh">分割方式で、基板が受けるストレスはこれだけ違う</div>
+  <p class="crk-p">小澤氏は、基板にひずみゲージを取り付けて分割時のストレス（ひずみ量：με＝マイクロストレイン）を実測し、方式による差を示しました。高速回転の刃（ルーター式など）は瞬間的に大きな弾性波を与えるのに対し、刃を交差させず手動で切るリニアスライスカット方式は、ひずみが桁違いに小さいという結果です。</p>
+
+  <div class="dwg-card reveal" style="margin-top:24px;">
+    <div class="dwg-head"><span class="dwg-model" style="font-size:1.05rem;">分割時に基板へ加わる瞬間ひずみの比較</span><span class="dwg-note">小澤氏の測定例より（単位：με）</span></div>
+    <svg viewBox="0 0 720 230" style="width:100%;max-width:720px;display:block;margin:0 auto;" role="img" aria-label="分割方式別のひずみ比較の棒グラフ">
+      <text x="20" y="38" font-size="15" fill="#444">回転刃・ルーター式</text>
+      <rect x="20" y="48" width="640" height="26" rx="4" fill="#9aa0a6"/>
+      <text x="668" y="66" font-size="15" font-weight="700" fill="#1A1A1A" text-anchor="end" style="paint-order:stroke;stroke:#fff;stroke-width:4;">4000με以上</text>
+      <text x="20" y="118" font-size="15" fill="#444">リニアスライスカット（VELX採用方式）</text>
+      <rect x="20" y="128" width="16" height="26" rx="4" fill="#00A896"/>
+      <text x="44" y="146" font-size="15" font-weight="700" fill="#007A6E">100με以下（40分の1以下）</text>
+      <line x1="20" y1="180" x2="700" y2="180" stroke="#ddd"/>
+      <text x="20" y="206" font-size="13" fill="#767676">分割後に基板へ残るひずみ（残留ひずみ）：回転刃・ルーター式 600〜800με ／ リニアスライスカット 検出限界以下</text>
+      <text x="20" y="224" font-size="12" fill="#999">※数値は原資料の測定例。回転数・基板の種類により変動します。</text>
+    </svg>
+  </div>
+
+  <p class="crk-p" style="margin-top:20px;">切断面にも差は現れます。高速回転刃で切った基板は断面のガラス繊維層が乱れるのに対し、衝撃を与えずに切った基板は繊維層が乱れることなく整った断面になります。この差が、そのまま搭載部品へのダメージの差になります。</p>
+
+  <div class="subh">結論——「低ストレス分割」が信頼性をつくる</div>
+  <p class="crk-p">小澤氏の結論は明快です。<strong>高機能な基板は、できる限り小さな弾性波で、残留ひずみを残さずに分割しなければならない。</strong>そのためには、上刃と下刃を交差させず、瞬間的な衝撃を与えない分割機を選ぶことが重要です。VELXが取り扱う基板分割機は、まさにこの考え方（リニアスライス方式・上下刃非交差構造）に基づいて設計されています。</p>
+
+  <div class="link-row" style="margin-top:28px;">
+    <a class="link-tile" href="strain.html"><div class="lt-en">VERIFICATION</div><div class="lt-ja">ひずみの検証</div><div class="lt-desc">実測データとマイクロクラックの検証資料</div></a>
+    <a class="link-tile" href="products.html"><div class="lt-en">PRODUCTS</div><div class="lt-ja">製品紹介</div><div class="lt-desc">低ストレス分割を実現する機種ラインナップ</div></a>
+    <a class="link-tile" href="features.html#crack"><div class="lt-en">CRACK CAUSE</div><div class="lt-ja">クラックの発生原因</div><div class="lt-desc">手割り・冶具・たわみによるクラックの仕組み</div></a>
+  </div>
+
+  <div class="subh">解説者について</div>
+  <div class="dwg-card" style="max-width:920px;">
+    <p class="crk-p"><strong>小澤 隆二（Lyuji Ozawa）</strong>／L. L. Technology（米国ニューヨーク）テクニカルコンサルタント。ブラウン管や蛍光ランプに使われる蛍光体（薄膜発光材料）研究の国際的な専門家として約40年の実務経験を持ち、米国の科学出版社CRC Pressから『Cathodoluminescence: Theory and Applications』（1990）、『Cathodoluminescence and Photoluminescence: Theories and Practical Applications』（2007）などの専門書を出版。薄膜チップの物性に精通した立場から、基板分割が電子部品に与える影響を解説しています。</p>
+    <p class="crk-p" style="margin-top:10px;font-size:0.85rem;color:var(--mid-gray);">出典：小澤隆二「電子機器の信頼性はモジュール基板の分割法に大きく依存」（MOA JAPAN配布・参考資料、全12ページ）。本ページはその要旨の再構成であり、原文の見解は著者に帰属します。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="margin-bottom:12px">
+        <svg class="velx-logo-h" viewBox="427 244 310 77" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="fg16" x1="442.32" y1="293.85" x2="483.06" y2="293.85" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#888"/><stop offset=".36" stop-color="#999"/>
+              <stop offset=".95" stop-color="#aaa"/><stop offset="1" stop-color="#bbb"/>
+            </linearGradient>
+            <linearGradient id="fg11" x1="475.02" y1="277.21" x2="517.99" y2="277.21" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#888"/><stop offset=".36" stop-color="#999"/>
+              <stop offset=".95" stop-color="#aaa"/><stop offset="1" stop-color="#bbb"/>
+            </linearGradient>
+          </defs>
+          <polygon fill="#aaa" points="461.56 261.39 438.46 261.39 427.7 244.34 450.81 244.34"/>
+          <polygon fill="url(#fg16)" points="483.06 308.39 475.62 320.21 442.32 267.49 450.93 267.49 467.56 293.83 470.71 288.85"/>
+          <path fill="url(#fg11)" d="M517.99,252.87l-30.63,48.68-.06-.1-12.28-19.42,13.72-21.69c.63-1,.86-2.21.63-3.37l-.82-4.1h29.44Z"/>
+          <polygon fill="#aaa" points="472.91 278.69 475.03 282.03 470.71 288.85 464.3 278.69"/>
+          <polygon fill="#aaa" points="499.16 320.21 490.53 320.21 483.06 308.39 487.36 301.55"/>
+          <polygon fill="#aaa" points="517.54 273.37 517.54 306.11 527.68 306.11 527.68 273.37"/>
+          <polygon fill="#aaa" points="529.64 296.93 529.64 304.49 567.26 273.37 558.08 273.37"/>
+          <rect fill="#aaa" x="573.72" y="273.37" width="35.21" height="5.87"/>
+          <polygon fill="#aaa" points="583.85 300.24 583.85 289.53 603.23 289.53 603.23 283.66 583.85 283.66 573.72 283.66 573.72 289.53 573.72 300.24 573.72 306.11 583.85 306.11 623.33 306.11 623.33 300.24 583.85 300.24"/>
+          <rect fill="#aaa" x="641.87" y="300.24" width="37.62" height="5.87"/>
+          <rect fill="#aaa" x="629.77" y="273.37" width="10.13" height="32.75"/>
+          <polygon fill="#aaa" points="717.23 288.54 712.88 284.51 700.85 273.37 685.95 273.37 705 291.03 709.35 295.05 721.28 306.11 736.19 306.11"/>
+          <polygon fill="#aaa" points="735.59 273.37 726.38 273.37 714.41 283.25 718.75 287.28"/>
+          <polygon fill="#aaa" points="686.75 306.11 695.96 306.11 707.81 296.32 703.47 292.3"/>
+        </svg>
+        <div style="font-size:0.6rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-top:4px;">株式会社</div>
+      </div>
+      <p class="footer-tagline">高精度基板分割機の輸入・販売・サポート。上刃と下刃が交差しない独自設計で、実装基板を低ストレスで精密分割します。</p>
+    </div>
+    <div>
+      <div class="footer-col-title">NAVIGATION</div>
+      <ul class="footer-links">
+        <li><a href="features.html">製品の特長</a></li>
+        <li><a href="products.html">製品紹介</a></li><li><a href="products-splitter.html">スプリッター</a></li><li><a href="strain.html">ひずみの検証</a></li><li><a href="reliability.html">専門家解説</a></li><li><a href="blade.html">刃の交換注意点</a></li>
+        <li><a href="selection.html">機種選定について</a></li>
+        <li><a href="index.html#about">会社案内</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">CONTACT</div>
+      <ul class="footer-links">
+        <li><a href="tel:0267-28-9853">TEL: 0267-28-9853</a></li>
+        <li><a href="mailto:info@velx.co.jp">info@velx.co.jp</a></li>
+        <li style="color:rgba(255,255,255,0.25);font-size:0.75rem;">長野県小諸市加増1-1-8</li>
+        <li style="color:rgba(255,255,255,0.25);font-size:0.75rem;">月〜金 9:00〜17:30</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 VELX株式会社. All Rights Reserved.</span>
+    <span class="footer-copy" style="opacity:0.5">velx.co.jp</span>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
