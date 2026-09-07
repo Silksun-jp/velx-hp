@@ -864,3 +864,8 @@ table.stbl th { background: var(--silver-light); font-weight: 500; white-space: 
 .crumbs { font-size: 0.82rem; color: var(--silver-dark); margin-bottom: 26px; }
 .crumbs a { color: var(--silver-dark); text-decoration: none; }
 .crumbs a:hover { color: var(--teal); }
+
+/* 画像の保存・ドラッグ抑止（2026-09-07） */
+img, svg { -webkit-user-drag: none; user-drag: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.dwg-card img { pointer-events: none; }
+.footer-notice { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 8px; line-height: 1.7; }

@@ -15,3 +15,7 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// 画像の右クリック・ドラッグ・長押し保存の抑止（2026-09-07）
+document.addEventListener('contextmenu', e => { if (e.target.closest('img, svg, .dwg-card')) e.preventDefault(); });
+document.addEventListener('dragstart', e => { if (e.target.closest('img, svg')) e.preventDefault(); });
