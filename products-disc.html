@@ -88,7 +88,7 @@
     <div class="section-label">DISC TYPE</div>
     <h2 class="section-h2">上刃下刃 丸刃タイプ</h2>
     <div class="section-divider"></div>
-    <p class="section-lead">上下ともに丸刃を備えたタイプ。基板カットサイズの規制がなく、LED基板などの長尺基板に対応します。上刃は基板送りモーター駆動付きで、スピードコントロールとカウント計を備えます。</p>
+    <p class="section-lead">上下ともに丸刃を備えたタイプ。基板カットサイズの規制がなく、LED基板などの長尺基板に対応します。上刃は基板送りモーター駆動付きで、コントロールユニットからスピードを調整できます。上刃と下刃は交差せずにカットし、切削カットではないため粉塵も摩擦も少ないやさしいカットが可能です。</p>
   </div>
   <div class="note-box reveal" style="margin-top:8px;"><strong>🔧 EM-2DF は現在、改良版を準備中です。</strong>最新仕様・写真は確定次第こちらに掲載します。ご検討・お見積りはお問い合わせください。</div>
   <div class="model-grid reveal" style="max-width:360px;margin:28px auto 0;">
@@ -100,19 +100,51 @@
           <div class="model-tag">上下丸刃</div>
           <ul class="model-specs">
             <li>最大カットサイズ<span class="spec-val">制限なし</span></li>
-            <li>上刃・下刃<span class="spec-val">Φ130×1.5mm</span></li>
+            <li>上刃・下刃<span class="spec-val">EMD1320 Φ130×1.5t</span></li>
             <li>上刃送り<span class="spec-val">基板送りモーター駆動付</span></li>
             <li>対応素材<span class="spec-val">FR4, CEM3</span></li>
+            <li>外形<span class="spec-val">601×704×439H</span></li>
             <li>重量<span class="spec-val">35 kg</span></li>
+            <li>電源<span class="spec-val">AC100〜240V（SMPS 50W DC24V）</span></li>
           </ul>
         </div>
       </div>
+  </div>
+  <div class="subh">コントロールユニット</div>
+  <div class="two-col reveal" style="align-items:center;">
+    <div class="dwg-card"><img src="images/controlunit-2df.webp" alt="EM-2DF コントロールユニット" class="img-limit" style="max-width:200px;"><div class="imgcap">コントロールユニット（SPEED表示・High／Low・ON／OFF）</div></div>
+    <p class="crk-p">上刃の基板送りモーターは、本体側面のコントロールユニットで操作します。SPEED表示を見ながら High／Low ボタンで送り速度を調整し、ON／OFF ボタンでモーターを始動・停止します。</p>
+  </div>
+  <div class="subh">基板送りローラーテーブル（オプション）</div>
+  <div class="two-col reveal" style="align-items:center;">
+    <div class="dwg-card"><img src="images/roller-table.webp" alt="標準サイズローラー付テーブル 700mm" class="img-limit" style="max-width:520px;"><div class="imgcap">標準サイズ ローラー付テーブル（700mm）</div></div>
+    <p class="crk-p">基板裏側に部品の無い基板には、ローラー付テーブルが使用できます。基板のバランスを取りながら送れるため、長尺基板でも安定してカットできます。</p>
+  </div>
+  <div class="two-col reveal" style="align-items:center;margin-top:20px;">
+    <div class="dwg-card"><img src="images/roller-table-ext.webp" alt="延長ローラーテーブル 700mm" class="img-limit" style="max-width:640px;"><div class="imgcap">延長テーブル（700mm）を追加した例</div></div>
+    <p class="crk-p">LED基板のように長い基板には、延長ローラーテーブル（700mm）を製作できます。基板の長さに合わせてご相談ください。</p>
+  </div>
+  <div class="subh">中抜き基板でのご注意</div>
+  <div class="two-col reveal" style="align-items:center;">
+    <svg viewBox="0 0 420 200" width="100%" style="max-width:420px;display:block;margin:0 auto;" role="img" aria-label="上下丸刃と中抜き基板の関係">
+      <circle cx="210" cy="60" r="44" fill="#e8d59a" stroke="#8a7a3a" stroke-width="1.5"/>
+      <text x="210" y="65" text-anchor="middle" font-size="15" fill="#333">上刃</text>
+      <circle cx="210" cy="150" r="44" fill="#e8d59a" stroke="#8a7a3a" stroke-width="1.5"/>
+      <text x="210" y="155" text-anchor="middle" font-size="15" fill="#333">下刃</text>
+      <rect x="20" y="101" width="120" height="8" fill="#4caf50"/>
+      <rect x="170" y="101" width="80" height="8" fill="#4caf50"/>
+      <rect x="290" y="101" width="110" height="8" fill="#4caf50"/>
+      <text x="345" y="92" text-anchor="middle" font-size="12" fill="#333">中抜き基板</text>
+      <line x1="140" y1="122" x2="170" y2="122" stroke="#c62828" stroke-width="1.5"/>
+      <text x="155" y="140" text-anchor="middle" font-size="11" fill="#c62828">中抜き 6mm以上</text>
+    </svg>
+    <p class="crk-p">中抜き基板では、中抜きの長さが長いと上刃が抜いた部分に落ち込み、基板が刃からそれるおそれがあります。中抜きの距離が 6mm 以上あると刃が落ち込んで止まってしまう場合があるため、中抜きの多い基板には不向きです。</p>
   </div>
   <div class="subh">外形図</div>
   <div class="dwg-grid">
     <div class="dwg-card reveal"><div class="dwg-head"><span class="dwg-model">EM-2DF</span><span class="dwg-note">外形図（単位：mm）</span></div><img src="images/dwg-em2df.webp" alt="EM-2DF 外形図（単位：mm）" style="max-width:880px;margin:0 auto;"></div>
   </div>
-  <div class="warn-box reveal">⚠️ 上下丸刃タイプは点接触のため、V溝際に衝撃に弱い部品が実装されている場合は基板仕様の確認が必要です。中抜き基板・部品がV溝際にある場合はシングル／ダブル機種をご検討ください。</div>
+  <div class="warn-box reveal">⚠️ 上下丸刃タイプは点接触のため、V溝際に衝撃に弱い部品が実装されている場合は基板仕様の確認が必要です。中抜き基板・部品がV溝際にある場合はシングル／ダブル機種をご検討ください。EM-2DF は基板の部品ひずみテストを行ったうえでの販売となります。</div>
 </section>
 <footer>
   <div class="footer-grid">
