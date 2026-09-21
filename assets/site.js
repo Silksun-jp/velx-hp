@@ -26,5 +26,5 @@ document.addEventListener('dragstart', e => { if (e.target.closest('img, svg')) 
   var f = document.querySelector('.contact-form'); if(!f) return;
   var cat = f.querySelector('[name="category"]'); if(cat) cat.value = 'used';
   var msg = f.querySelector('[name="message"]');
-  if(msg && !msg.value) msg.value = 'デモ機・中古機（ID：' + m + '）について問い合わせます。\n\nご希望（価格・見学・テストカット・納期など）：\n';
+  if(msg && !msg.value) msg.value = 'デモ機・中古機（ID：' + m + '）について問い合わせます。\n\nご希望（価格・追加写真・テストカット・納期など）：\n';
 })();

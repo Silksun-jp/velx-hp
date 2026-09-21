@@ -63,6 +63,10 @@
         <div><label>機種（型式）</label><input type="text" id="model" list="models" placeholder="EM-360"><datalist id="models"><option>EM-260</option><option>EM-360</option><option>EM-460</option><option>EM-260M</option><option>EM-360M</option><option>EM-460M</option><option>EMW-360</option><option>EMW-460</option><option>EM-2DF</option><option>MS20</option><option>MS25</option><option>MS33</option><option>MW21</option><option>MW25</option></datalist></div>
         <div><label>タイトル（表示名）</label><input type="text" id="title" placeholder="EM-360 デモ機"></div>
       </div>
+      <div class="row">
+        <div><label>区分</label><select id="kind"><option>デモ機</option><option>中古機（下取り品）</option><option>展示品</option><option>新古品</option></select></div>
+        <div></div>
+      </div>
       <label>シリーズ（新品ページへのリンク）</label>
       <select id="series">
         <option value="products-single.html">シングル機種（手動）</option>
@@ -89,10 +93,10 @@
       <textarea id="condition_note" placeholder="例：天板に小さな擦り傷あり。刃・テーブル・ハンドルの動作は良好。"></textarea>
       <label>使用歴（デモ回数・テストカット枚数・稼働時間など）</label>
       <textarea id="usage" placeholder="例：展示会デモ 2回、社内テストカット 約100枚（稼働 数時間程度）"></textarea>
-      <label>刃の状態</label>
-      <textarea id="blade" placeholder="例：上刃 EMD1620（20度）は新品に交換済み、下刃 EML3620 は良品（カケなし）"></textarea>
-      <label>整備内容（実施日）</label>
-      <textarea id="maintenance" placeholder="例：清掃・ギャップ調整・動作確認済み（2026年9月）"></textarea>
+      <label>刃（空欄なら共通文「上刃・下刃とも新品に交換してお届けします」が入ります）</label>
+      <textarea id="blade" placeholder="例：上刃 EMD1620（20度）・下刃 EML3620 とも新品に交換"></textarea>
+      <label>整備・点検（空欄なら共通文「出荷前に全台、点検・清掃・隙間調整・動作確認」が入ります）</label>
+      <textarea id="maintenance" placeholder="例：2026年9月に点検・清掃・隙間調整・動作確認済み。テーブル上下機構のグリスアップ実施。"></textarea>
     </div>
 
     <div class="card" style="margin-top:20px;">
@@ -123,7 +127,7 @@
       <textarea id="specs" placeholder="最大カットサイズ：360mm（幅任意）&#10;実装部品制限：上面50／下面27mm&#10;外形寸法：幅600×長さ816.5×高さ439mm&#10;重量：37kg"></textarea>
       <label>備考</label>
       <textarea id="notes" placeholder="例：お客様の基板でのテストカット後、写真をお送りできます。"></textarea>
-      <div class="hint">保管場所・引渡し・納期・支払いは共通条件（items.js の USED_DEFAULTS）が使われます。この機械だけ違う場合は生成後に追記してください。</div>
+      <div class="hint">保管場所・引渡し・納期・支払い・状態の確認方法（見学なし）は共通条件（items.js の USED_DEFAULTS）が使われます。この機械だけ違う場合は生成後に追記してください。</div>
     </div>
   </div>
 
@@ -187,6 +191,7 @@
     L.push('    id: '+q(id)+',');
     L.push('    status: '+q(g('status'))+',');
     L.push('    title: '+q(g('title')||g('model'))+',');
+    L.push('    kind: '+q(document.getElementById('kind').value)+',');
     L.push('    model: '+q(g('model'))+',');
     if(serTxt) L.push('    series: '+q(serTxt)+',');
     if(ser.value) L.push('    link: '+q(ser.value)+',');
