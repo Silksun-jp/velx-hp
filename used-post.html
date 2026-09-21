@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>デモ機・中古機 投稿ツール（社内用） | VELX</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --teal:#00A896; --teal-dark:#007A6E; --black:#1A1A1A; --gray:#666; --line:#e2e2e2; --bg:#f5f5f5; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:'Noto Sans JP',sans-serif; color:var(--black); background:var(--bg); font-size:15px; line-height:1.7; }
+  header { background:#1A1A1A; color:#fff; padding:14px 24px; font-weight:700; letter-spacing:.06em; }
+  header small { font-weight:400; opacity:.7; margin-left:12px; }
+  main { max-width:1180px; margin:0 auto; padding:24px; display:grid; grid-template-columns: 1fr 1fr; gap:24px; }
+  @media (max-width:900px){ main { grid-template-columns:1fr; } }
+  .card { background:#fff; border:1px solid var(--line); padding:20px 22px; }
+  h2 { font-size:1.05rem; margin:0 0 12px; padding-left:10px; border-left:3px solid var(--teal); }
+  label { display:block; font-size:.82rem; color:var(--gray); margin-top:12px; }
+  input[type=text], input[type=date], input[type=number], textarea, select { width:100%; padding:8px 10px; border:1px solid #ccc; border-radius:3px; font:inherit; font-size:.92rem; background:#fff; }
+  textarea { min-height:64px; resize:vertical; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .cond { display:grid; grid-template-columns:1fr; gap:6px; margin-top:6px; }
+  .cond label { display:flex; align-items:center; gap:10px; margin:0; padding:8px 10px; border:1px solid var(--line); border-radius:3px; cursor:pointer; color:var(--black); font-size:.9rem; }
+  .cond label:has(input:checked) { border-color:var(--teal); background:#E6F7F5; }
+  .cond input { margin:0; }
+  .cond .m { display:inline-flex; gap:2px; margin-left:auto; }
+  .cond .m i { width:14px; height:7px; background:#ddd; display:block; border-radius:1px; }
+  .cond .m i.on { background:var(--teal); }
+  .hint { font-size:.78rem; color:#888; margin-top:4px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .chips label { margin:0; padding:5px 10px; border:1px solid var(--line); border-radius:20px; font-size:.82rem; color:var(--black); cursor:pointer; display:flex; align-items:center; gap:6px; }
+  .chips label:has(input:checked) { border-color:var(--teal); background:#E6F7F5; }
+  .drop { margin-top:8px; border:2px dashed #bbb; border-radius:4px; padding:22px; text-align:center; color:#777; font-size:.88rem; cursor:pointer; }
+  .drop.over { border-color:var(--teal); background:#E6F7F5; }
+  .thumbs { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .thumbs div { position:relative; }
+  .thumbs img { width:110px; height:82px; object-fit:cover; border:1px solid var(--line); display:block; }
+  .thumbs span { position:absolute; left:4px; top:4px; background:rgba(0,0,0,.6); color:#fff; font-size:.7rem; padding:1px 6px; border-radius:2px; }
+  .thumbs button { position:absolute; right:2px; top:2px; border:none; background:rgba(0,0,0,.6); color:#fff; width:20px; height:20px; border-radius:50%; cursor:pointer; font-size:.8rem; line-height:1; }
+  .btn { display:inline-block; background:var(--teal); color:#fff; border:none; padding:11px 20px; border-radius:3px; font:inherit; font-weight:700; cursor:pointer; letter-spacing:.05em; }
+  .btn:hover { background:var(--teal-dark); }
+  .btn.sub { background:#fff; color:var(--black); border:1px solid #bbb; font-weight:500; }
+  .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+  pre { background:#1e1e1e; color:#e8e8e8; padding:14px; font-size:.78rem; line-height:1.55; overflow:auto; max-height:520px; border-radius:3px; white-space:pre-wrap; word-break:break-all; }
+  ol.steps { padding-left:1.3em; font-size:.88rem; color:var(--gray); }
+  ol.steps code { background:#eee; padding:1px 5px; border-radius:2px; font-size:.82rem; color:var(--black); }
+  .ok { color:var(--teal-dark); font-size:.85rem; margin-top:8px; }
+  .sticky { position:sticky; top:16px; }
+</style>
+</head>
+<body>
+<header>デモ機・中古機 投稿ツール <small>社内用：used/items.js に追加する1台分のデータと、リサイズ済み写真を作ります</small></header>
+<main>
+  <div>
+    <div class="card">
+      <h2>1. 基本情報</h2>
+      <div class="row">
+        <div><label>管理ID（自動）</label><input type="text" id="id"></div>
+        <div><label>状態（販売状況）</label><select id="status"><option>販売中</option><option>商談中</option><option>売約済</option></select></div>
+      </div>
+      <div class="row">
+        <div><label>機種（型式）</label><input type="text" id="model" list="models" placeholder="EM-360"><datalist id="models"><option>EM-260</option><option>EM-360</option><option>EM-460</option><option>EM-260M</option><option>EM-360M</option><option>EM-460M</option><option>EMW-360</option><option>EMW-460</option><option>EM-2DF</option><option>MS20</option><option>MS25</option><option>MS33</option><option>MW21</option><option>MW25</option></datalist></div>
+        <div><label>タイトル（表示名）</label><input type="text" id="title" placeholder="EM-360 デモ機"></div>
+      </div>
+      <label>シリーズ（新品ページへのリンク）</label>
+      <select id="series">
+        <option value="products-single.html">シングル機種（手動）</option>
+        <option value="products-motor.html">シングル機種（モーター付き）</option>
+        <option value="products-double.html">ダブル機種</option>
+        <option value="products-disc.html">上刃下刃 丸刃タイプ</option>
+        <option value="products-splitter.html">スプリッター（MS／MW）</option>
+        <option value="">その他（リンクなし）</option>
+      </select>
+      <div class="row">
+        <div><label>年式・製造年</label><input type="text" id="year" placeholder="2025年製"></div>
+        <div><label>掲載日</label><input type="date" id="posted"></div>
+      </div>
+      <div class="row">
+        <div><label>価格</label><input type="text" id="price" value="ASK"><div class="hint">ASK ＝ お問い合わせ表示。金額を出すときは 350000 のように数字（税抜）</div></div>
+        <div><label>数量</label><input type="number" id="qty" value="1" min="1"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h2>2. 状態（メルカリと同じ6段階）</h2>
+      <div class="cond" id="cond"></div>
+      <label>状態の補足（傷・汚れの場所、動作の良否、写真で分かりにくい点）</label>
+      <textarea id="condition_note" placeholder="例：天板に小さな擦り傷あり。刃・テーブル・ハンドルの動作は良好。"></textarea>
+      <label>使用歴（デモ回数・テストカット枚数・稼働時間など）</label>
+      <textarea id="usage" placeholder="例：展示会デモ 2回、社内テストカット 約100枚（稼働 数時間程度）"></textarea>
+      <label>刃の状態</label>
+      <textarea id="blade" placeholder="例：上刃 EMD1620（20度）は新品に交換済み、下刃 EML3620 は良品（カケなし）"></textarea>
+      <label>整備内容（実施日）</label>
+      <textarea id="maintenance" placeholder="例：清掃・ギャップ調整・動作確認済み（2026年9月）"></textarea>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h2>3. 付属品・保証・条件</h2>
+      <label>付属品（チェック＋追記）</label>
+      <div class="chips" id="inc">
+        <label><input type="checkbox" value="上刃（新品）">上刃（新品）</label>
+        <label><input type="checkbox" value="上刃（使用品）">上刃（使用品）</label>
+        <label><input type="checkbox" value="下刃">下刃</label>
+        <label><input type="checkbox" value="押さえ板">押さえ板</label>
+        <label><input type="checkbox" value="取扱説明書">取扱説明書</label>
+        <label><input type="checkbox" value="付属工具（六角レンチ等）">付属工具</label>
+        <label><input type="checkbox" value="ひずみチェッカー">ひずみチェッカー</label>
+        <label><input type="checkbox" value="電源ケーブル">電源ケーブル</label>
+        <label><input type="checkbox" value="ローラーテーブル">ローラーテーブル</label>
+      </div>
+      <input type="text" id="inc_extra" placeholder="その他の付属品（カンマ区切り）" style="margin-top:8px;">
+      <label>欠品・注意点</label>
+      <input type="text" id="missing" placeholder="例：ひずみチェッカーは付属しません">
+      <label>保証</label>
+      <select id="warranty">
+        <option>納品後3ヶ月の動作保証（刃などの消耗品を除く）</option>
+        <option>納品後1ヶ月の動作保証（刃などの消耗品を除く）</option>
+        <option>納品後6ヶ月の動作保証（刃などの消耗品を除く）</option>
+        <option>現状渡し（保証なし）</option>
+      </select>
+      <label>主な仕様（1行1項目、「項目：値」）</label>
+      <textarea id="specs" placeholder="最大カットサイズ：360mm（幅任意）&#10;実装部品制限：上面50／下面27mm&#10;外形寸法：幅600×長さ816.5×高さ439mm&#10;重量：37kg"></textarea>
+      <label>備考</label>
+      <textarea id="notes" placeholder="例：お客様の基板でのテストカット後、写真をお送りできます。"></textarea>
+      <div class="hint">保管場所・引渡し・納期・支払いは共通条件（items.js の USED_DEFAULTS）が使われます。この機械だけ違う場合は生成後に追記してください。</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="sticky">
+      <div class="card">
+        <h2>4. 写真</h2>
+        <div class="drop" id="drop">ここに写真をドラッグ＆ドロップ（またはクリックして選択）<br><span style="font-size:.78rem;">横1200pxに縮小した JPEG を作ります。1枚目がメイン写真になります。</span></div>
+        <input type="file" id="file" accept="image/*" multiple style="display:none;">
+        <div class="thumbs" id="thumbs"></div>
+        <div class="btns"><button class="btn sub" id="dl" type="button">写真をまとめてダウンロード</button></div>
+        <div class="hint">ダウンロードした写真を <code>velx-hp/used/photos/&lt;ID&gt;/</code> に入れてください（ファイル名はそのまま）。</div>
+      </div>
+      <div class="card" style="margin-top:20px;">
+        <h2>5. 生成したデータ</h2>
+        <div class="btns"><button class="btn" id="gen" type="button">データを生成</button><button class="btn sub" id="copy" type="button">コピー</button></div>
+        <pre id="out">（「データを生成」を押してください）</pre>
+        <div class="ok" id="okmsg"></div>
+        <ol class="steps">
+          <li><code>velx-hp/used/items.js</code> をテキストエディタで開く</li>
+          <li><code>const USED_ITEMS = [</code> の次の行に、上のデータを貼り付ける（既にある機械の前でOK）</li>
+          <li>写真フォルダを入れて、ターミナルで <code>cd ~/Desktop/VELX株式会社/velx-hp && git add -A && git commit -m "デモ機追加" && git push</code></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  var COND=[[1,'新品・未使用','未使用のもの'],[2,'未使用に近い','数回しか使用しておらず、傷や汚れがない'],[3,'目立った傷や汚れなし','よく見ないと分からない程度の傷・汚れ'],[4,'やや傷や汚れあり','見て分かる傷・汚れがあるが、動作に問題なし'],[5,'傷や汚れあり','はっきりした傷・汚れ・サビがある'],[6,'全体的に状態が悪い','部品取り・要修理など']];
+  var c=document.getElementById('cond');
+  c.innerHTML=COND.map(function(x){ var m=''; for(var i=1;i<=6;i++) m+='<i class="'+(i<=(7-x[0])?'on':'')+'"></i>'; return '<label><input type="radio" name="cond" value="'+x[0]+'"'+(x[0]===3?' checked':'')+'><b>'+x[1]+'</b><span style="color:#888;font-size:.8rem;">'+x[2]+'</span><span class="m">'+m+'</span></label>'; }).join('');
+  var today=new Date(); var ymd=today.toISOString().slice(0,10); document.getElementById('posted').value=ymd;
+  document.getElementById('id').value='U'+ymd.slice(0,4)+'-'+String(today.getMonth()+1).padStart(2,'0')+String(today.getDate()).padStart(2,'0')+'-'+String(today.getHours()).padStart(2,'0')+String(today.getMinutes()).padStart(2,'0');
+  document.getElementById('model').addEventListener('input', function(){ var t=document.getElementById('title'); if(!t.dataset.touched) t.value=this.value+' デモ機'; });
+  document.getElementById('title').addEventListener('input', function(){ this.dataset.touched='1'; });
+  // 写真
+  var files=[]; var drop=document.getElementById('drop'), inp=document.getElementById('file'), thumbs=document.getElementById('thumbs');
+  drop.addEventListener('click', function(){ inp.click(); });
+  drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.classList.add('over'); });
+  drop.addEventListener('dragleave', function(){ drop.classList.remove('over'); });
+  drop.addEventListener('drop', function(e){ e.preventDefault(); drop.classList.remove('over'); add(e.dataTransfer.files); });
+  inp.addEventListener('change', function(){ add(inp.files); inp.value=''; });
+  function add(fl){ Array.prototype.forEach.call(fl, function(f){ if(!f.type.match(/^image\//)) return; resize(f, function(blob,url){ files.push({blob:blob,url:url}); render(); }); }); }
+  function resize(f, cb){ var img=new Image(); img.onload=function(){ var W=1200, s=Math.min(1, W/img.width); var cv=document.createElement('canvas'); cv.width=Math.round(img.width*s); cv.height=Math.round(img.height*s); cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height); cv.toBlob(function(b){ cb(b, URL.createObjectURL(b)); }, 'image/jpeg', 0.86); }; img.src=URL.createObjectURL(f); }
+  function render(){ thumbs.innerHTML=files.map(function(f,i){ return '<div><img src="'+f.url+'"><span>'+(i+1)+(i===0?' メイン':'')+'</span><button data-i="'+i+'" title="削除">×</button></div>'; }).join(''); }
+  thumbs.addEventListener('click', function(e){ var b=e.target.closest('button'); if(b){ files.splice(+b.dataset.i,1); render(); } });
+  document.getElementById('dl').addEventListener('click', function(){ if(!files.length){ alert('写真がありません'); return; } files.forEach(function(f,i){ setTimeout(function(){ var a=document.createElement('a'); a.href=f.url; a.download=(i+1)+'.jpg'; document.body.appendChild(a); a.click(); a.remove(); }, i*400); }); });
+  // 生成
+  function q(s){ return JSON.stringify(String(s||'')); }
+  document.getElementById('gen').addEventListener('click', function(){
+    var g=function(id){ return document.getElementById(id).value.trim(); };
+    var id=g('id'); var ser=document.getElementById('series'); var serTxt=ser.options[ser.selectedIndex].text; if(ser.value==='') serTxt='';
+    var inc=Array.prototype.map.call(document.querySelectorAll('#inc input:checked'), function(x){return x.value;});
+    g('inc_extra').split(/[,、，]/).map(function(s){return s.trim();}).filter(Boolean).forEach(function(s){inc.push(s);});
+    var specs=g('specs').split('\n').map(function(l){ var m=l.split(/[:：]/); return m.length>=2?[m[0].trim(), m.slice(1).join('：').trim()]:null; }).filter(Boolean);
+    var price=g('price'); var priceJs = (price===''||price.toUpperCase()==='ASK') ? '"ASK"' : (isNaN(price)?q(price):String(Number(price)));
+    var photos=files.map(function(_,i){ return 'used/photos/'+id+'/'+(i+1)+'.jpg'; });
+    var L=[];
+    L.push('  {');
+    L.push('    id: '+q(id)+',');
+    L.push('    status: '+q(g('status'))+',');
+    L.push('    title: '+q(g('title')||g('model'))+',');
+    L.push('    model: '+q(g('model'))+',');
+    if(serTxt) L.push('    series: '+q(serTxt)+',');
+    if(ser.value) L.push('    link: '+q(ser.value)+',');
+    L.push('    condition: '+(document.querySelector('input[name=cond]:checked')||{value:3}).value+',');
+    if(g('condition_note')) L.push('    condition_note: '+q(g('condition_note'))+',');
+    L.push('    photos: ['+photos.map(q).join(', ')+'],');
+    if(g('year')) L.push('    year: '+q(g('year'))+',');
+    if(g('usage')) L.push('    usage: '+q(g('usage'))+',');
+    if(g('blade')) L.push('    blade: '+q(g('blade'))+',');
+    if(g('maintenance')) L.push('    maintenance: '+q(g('maintenance'))+',');
+    if(inc.length) L.push('    included: ['+inc.map(q).join(', ')+'],');
+    if(g('missing')) L.push('    missing: '+q(g('missing'))+',');
+    if(specs.length) L.push('    specs: [\n'+specs.map(function(s){return '      ['+q(s[0])+', '+q(s[1])+']';}).join(',\n')+'\n    ],');
+    L.push('    warranty: '+q(g('warranty'))+',');
+    L.push('    price: '+priceJs+',');
+    L.push('    qty: '+(parseInt(g('qty'))||1)+',');
+    L.push('    posted: '+q(g('posted'))+',');
+    if(g('notes')) L.push('    notes: '+q(g('notes'))+',');
+    L.push('  },');
+    document.getElementById('out').textContent=L.join('\n');
+    document.getElementById('okmsg').textContent='写真は '+photos.length+' 枚。used/photos/'+id+'/ に 1.jpg〜'+photos.length+'.jpg の名前で置いてください。';
+  });
+  document.getElementById('copy').addEventListener('click', function(){ var t=document.getElementById('out').textContent; navigator.clipboard.writeText(t).then(function(){ document.getElementById('okmsg').textContent='コピーしました。items.js に貼り付けてください。'; }); });
+})();
+</script>
+</body>
+</html>

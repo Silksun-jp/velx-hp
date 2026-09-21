@@ -19,3 +19,12 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // 画像の右クリック・ドラッグ・長押し保存の抑止（2026-09-07）
 document.addEventListener('contextmenu', e => { if (e.target.closest('img, svg, .dwg-card')) e.preventDefault(); });
 document.addEventListener('dragstart', e => { if (e.target.closest('img, svg')) e.preventDefault(); });
+
+// デモ機・中古機ページからの問い合わせ（index.html?used=ID#contact）：種別と本文を事前入力（2026-09-21）
+(function(){
+  var m = new URLSearchParams(location.search).get('used'); if(!m) return;
+  var f = document.querySelector('.contact-form'); if(!f) return;
+  var cat = f.querySelector('[name="category"]'); if(cat) cat.value = 'used';
+  var msg = f.querySelector('[name="message"]');
+  if(msg && !msg.value) msg.value = 'デモ機・中古機（ID：' + m + '）について問い合わせます。\n\nご希望（価格・見学・テストカット・納期など）：\n';
+})();
