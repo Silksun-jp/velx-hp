@@ -91,7 +91,7 @@
     <div class="section-label">DEMO &amp; USED MACHINES</div>
     <h2 class="section-h2">デモ機・中古機販売</h2>
     <div class="section-divider"></div>
-    <p class="section-lead">展示会や社内デモで使用した機械、お客様から下取りした機械を、状態を正直に明記したうえで販売しています。すべての機械は<strong>上刃・下刃を新品に交換し、点検・調整を行ってから出荷</strong>します。機種名をクリックすると写真と詳細をご覧いただけます。価格はお問い合わせください（ASK）。</p>
+    <p class="section-lead">展示会や社内デモで使用したデモ機を、状態を正直に明記したうえで販売しています。すべての機械は<strong>上刃・下刃を新品に交換し、点検・調整を行ってから出荷</strong>します。機種名をクリックすると写真と詳細をご覧いただけます。価格はお問い合わせください（ASK）。</p>
   </div>
 
   <div class="subh">ご購入の流れ</div>
@@ -122,7 +122,7 @@
     <a href="used.html" class="used-back" id="used-back">← 一覧に戻る</a>
     <div class="used-list" id="used-list"></div>
   </div>
-  <div class="note-box reveal" style="margin-top:36px;">掲載中の機械以外にも、下取り予定の機械がある場合があります。ご希望の機種・カットサイズをお知らせいただければ、入荷時にご連絡します。お問い合わせは <a href="index.html#contact" style="color:var(--teal);">お問い合わせフォーム</a>、<a href="mailto:info@velx.co.jp" style="color:var(--teal);">info@velx.co.jp</a>、または TEL 0267-28-9853 まで。</div>
+  <div class="note-box reveal" style="margin-top:36px;">掲載中の機械以外にも、近くデモを終える機械がある場合があります。ご希望の機種・カットサイズをお知らせいただければ、掲載時にご連絡します。お問い合わせは <a href="index.html#contact" style="color:var(--teal);">お問い合わせフォーム</a>、<a href="mailto:info@velx.co.jp" style="color:var(--teal);">info@velx.co.jp</a>、または TEL 0267-28-9853 まで。</div>
 </section>
 <div class="used-lb" id="used-lb"><span class="x">×</span><span class="arr l">‹</span><img alt=""><span class="arr r">›</span></div>
 <footer>
@@ -247,7 +247,7 @@
         '<div class="used-posted">写真をクリックすると拡大表示します。'+(it.photo_note?' '+esc(it.photo_note):'')+'</div>'+
       '</div>'+
       '<div class="used-body">'+
-        '<div class="used-head"><span class="used-status '+s+'">'+esc(st)+'</span><span class="used-id">ID '+esc(it.id||'')+'</span>'+(it.kind?'<span class="used-id">'+esc(it.kind)+'</span>':'')+'</div>'+
+        '<div class="used-head"><span class="used-status '+s+'">'+esc(st)+'</span><span class="used-id">ID '+esc(it.id||'')+'</span>'+(it.kind?'<span class="used-kind">'+esc(it.kind)+'</span>':'')+'</div>'+
         '<div class="used-title">'+esc(it.title||it.model||'')+'</div>'+
         '<div class="used-series">'+esc(it.series||'')+(it.link?'　<a href="'+esc(it.link)+'">新品の製品ページ →</a>':'')+'</div>'+
         '<div class="used-price"><span class="lab">価格</span>'+priceHtml(it)+'</div>'+
