@@ -122,7 +122,6 @@
     <a href="used.html" class="used-back" id="used-back">← 一覧に戻る</a>
     <div class="used-list" id="used-list"></div>
   </div>
-  <div class="note-box reveal" style="margin-top:36px;">掲載中の機械以外にも、近くデモを終える機械がある場合があります。ご希望の機種・カットサイズをお知らせいただければ、掲載時にご連絡します。お問い合わせは <a href="index.html#contact" style="color:var(--teal);">お問い合わせフォーム</a>、<a href="mailto:info@velx.co.jp" style="color:var(--teal);">info@velx.co.jp</a>、または TEL 0267-28-9853 まで。</div>
 </section>
 <div class="used-lb" id="used-lb"><span class="x">×</span><span class="arr l">‹</span><img alt=""><span class="arr r">›</span></div>
 <footer>
@@ -261,7 +260,7 @@
           row('備考',nl(it.notes))+
         '</table>'+
         (s!=='sold'?'<div class="used-btns"><a class="btn-primary" href="index.html?used='+encodeURIComponent(it.id||'')+'#contact">この機械について問い合わせる</a><a class="btn-outline" href="mailto:info@velx.co.jp?subject='+subj+'&body='+mailBody+'">メールで問い合わせ</a><a class="btn-outline" href="tel:0267-28-9853">TEL 0267-28-9853</a></div>'
-                    :'<div class="note-box" style="margin-top:18px;">この機械は売約済です。同じ機種をお探しの場合は、<a href="index.html#contact" style="color:var(--teal);">お問い合わせフォーム</a>から「入荷待ち」としてお知らせください。</div>')+
+                    :'<div class="note-box" style="margin-top:18px;">この機械は売約済です。</div>')+
         '<div class="used-posted">掲載日 '+esc(it.posted||'')+(it.sold_date?'　／　売約 '+esc(it.sold_date):'')+'</div>'+
       '</div></article>';
     window.scrollTo({top: document.getElementById('used').offsetTop - 60, behavior:'auto'});

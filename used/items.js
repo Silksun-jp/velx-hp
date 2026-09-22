@@ -54,7 +54,7 @@ const USED_ITEMS = [
       ["重量", "17kg"]
     ],
     price: "ASK",
-    posted: "2026-09-21",
+    posted: "2026-08-21",
     sold_date: "2026-09-21"
   },
   {
@@ -84,7 +84,7 @@ const USED_ITEMS = [
       ["重量", "34kg"]
     ],
     price: "ASK",
-    posted: "2026-09-21",
+    posted: "2026-08-21",
     sold_date: "2026-09-21"
   }
 ];
