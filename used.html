@@ -98,18 +98,17 @@
   <div class="used-steps reveal">
     <div class="used-step"><div class="n">01</div><div class="t">お問い合わせ</div><div class="d">機械の ID（例：U2026-001）を添えてフォーム・メール・お電話でご連絡ください。追加の写真や動画もお送りできます。</div></div>
     <div class="used-step"><div class="n">02</div><div class="t">状態の確認</div><div class="d">追加の写真・動画をお送りします。基板をお送りいただければテストカットして結果を写真でお伝えします（実機の見学は行っておりません）。</div></div>
-    <div class="used-step"><div class="n">03</div><div class="t">お見積り・ご注文</div><div class="d">本体価格・送料・設置の有無を含めたお見積りをお出しします。ご注文後は他のお客様への販売を止めます。</div></div>
+    <div class="used-step"><div class="n">03</div><div class="t">お見積り・ご注文</div><div class="d">本体価格と送料を含めたお見積りをお出しします。ご注文後は他のお客様への販売を止めます。</div></div>
     <div class="used-step"><div class="n">04</div><div class="t">点検・刃交換のうえ納品</div><div class="d">上刃・下刃を新品に交換し、清掃・隙間調整・動作確認を行ってから発送します。到着後の初期設定は電話・動画でサポートします。</div></div>
   </div>
 
   <div class="subh">共通のお取引条件</div>
   <div class="used-terms reveal">
-    <div><b>価格</b>各機械の価格はお問い合わせください（表示は税抜）。送料・設置費は別途お見積りします。</div>
+    <div><b>価格</b>各機械の価格はお問い合わせください（表示は税抜）。送料は別途お見積りします。</div>
     <div><b>刃と整備</b>すべての機械について、上刃・下刃を新品に交換し、点検・清掃・隙間調整・動作確認を行ってから出荷します。写真は整備前のものを含む場合があります。</div>
     <div><b>保証</b>「動作保証」と記載の機械は、納品後の期間内に通常使用で生じた不具合を無償で修理・調整します（刃などの消耗品を除く）。「現状渡し」の機械は保証がありません。</div>
     <div><b>状態の表示</b>外観の状態はメルカリと同じ 6 段階で表示し、機能面（刃・隙間調整・ハンドル・テーブル）は別に記載しています。写真に写らない傷や汚れがある場合は必ず記載します。</div>
-    <div><b>引渡し・納期</b>基本は倉庫渡し（長野県小諸市）で全国配送可。在庫品はご注文から約1週間で発送します。</div>
-    <div><b>お支払い</b>銀行振込（納品前入金）。法人のお客様は請求書払いもご相談ください。</div>
+    <div><b>お届け・納期</b>すべて発送でのお届けです（長野県小諸市より全国配送、送料別途）。在庫品はご注文から約1週間で発送します。</div>
     <div><b>状態の確認方法</b>実機の見学は行っておりません。追加の写真・動画をお送りするほか、お客様の基板をお送りいただければテストカットして結果をお伝えします。</div>
     <div><b>デモ機の貸し出し</b>デモ機の貸し出しは原則として行っておりません。当社から使い方のレクチャーを受けていただいた企業様に限り、有償にて承ります。</div>
     <div><b>返品・交換</b>中古品の性質上、お客様都合の返品はお受けできません。記載内容と明らかに異なる場合は納品後7日以内にご連絡ください。</div>
@@ -257,8 +256,8 @@
           row('年式',esc(it.year))+row('使用歴',nl(it.usage))+row('刃',nl(v(it,'blade')))+row('整備・点検',nl(v(it,'maintenance')))+
           row('付属品',inc)+row('欠品・注意',nl(it.missing),'miss')+
           specs+
-          row('数量',esc(v(it,'qty'))+' 台')+row('保証',nl(v(it,'warranty')))+row('保管場所',esc(v(it,'location')))+
-          row('引渡し',nl(v(it,'delivery')))+row('納期',esc(v(it,'leadtime')))+row('状態の確認',nl(v(it,'inspection')))+row('お支払い',nl(v(it,'payment')))+
+          row('数量',esc(v(it,'qty'))+' 台')+row('保証',nl(v(it,'warranty')))+
+          row('お届け',nl(v(it,'delivery')))+row('納期',esc(v(it,'leadtime')))+row('状態の確認',nl(v(it,'inspection')))+
           row('備考',nl(it.notes))+
         '</table>'+
         (s!=='sold'?'<div class="used-btns"><a class="btn-primary" href="index.html?used='+encodeURIComponent(it.id||'')+'#contact">この機械について問い合わせる</a><a class="btn-outline" href="mailto:info@velx.co.jp?subject='+subj+'&body='+mailBody+'">メールで問い合わせ</a><a class="btn-outline" href="tel:0267-28-9853">TEL 0267-28-9853</a></div>'
