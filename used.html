@@ -107,7 +107,7 @@
     <div><b>価格</b>各機械の価格はお問い合わせください（表示は税抜）。送料は別途お見積りします。</div>
     <div><b>刃と整備</b>すべての機械について、上刃・下刃を新品に交換し、点検・清掃・隙間調整・動作確認を行ってから出荷します。写真は整備前のものを含む場合があります。</div>
     <div><b>保証</b>「動作保証」と記載の機械は、納品後の期間内に通常使用で生じた不具合を無償で修理・調整します（刃などの消耗品を除く）。「現状渡し」の機械は保証がありません。</div>
-    <div><b>状態の表示</b>外観の状態はメルカリと同じ 6 段階で表示し、機能面（刃・隙間調整・ハンドル・テーブル）は別に記載しています。写真に写らない傷や汚れがある場合は必ず記載します。</div>
+    <div><b>状態の表示</b>外観の状態は 5 段階で表示し、機能面（刃・隙間調整・ハンドル・テーブル）は別に記載しています。写真に写らない傷や汚れがある場合は必ず記載します。</div>
     <div><b>お届け・納期</b>すべて発送でのお届けです（長野県小諸市より全国配送、送料別途）。在庫品はご注文から約1週間で発送します。</div>
     <div><b>状態の確認方法</b>実機の見学は行っておりません。追加の写真・動画をお送りするほか、お客様の基板をお送りいただければテストカットして結果をお伝えします。</div>
     <div><b>デモ機の貸し出し</b>デモ機の貸し出しは原則として行っておりません。当社から使い方のレクチャーを受けていただいた企業様に限り、有償にて承ります。</div>
@@ -187,7 +187,7 @@
 <script src="used/items.js"></script>
 <script>
 (function(){
-  var COND = {1:'新品・未使用',2:'未使用に近い',3:'目立った傷や汚れなし',4:'やや傷や汚れあり',5:'傷や汚れあり',6:'全体的に状態が悪い'};
+  var COND = {1:'新品・未使用',2:'未使用に近い',3:'目立った傷や汚れなし',4:'やや傷や汚れあり',5:'傷や汚れあり'};
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function nl(s){ return esc(s).replace(/\n/g,'<br>'); }
   var D = (typeof USED_DEFAULTS!=='undefined')?USED_DEFAULTS:{};
@@ -196,7 +196,7 @@
   items.sort(function(a,b){ return (order[a.status]||0)-(order[b.status]||0) || String(b.posted||'').localeCompare(String(a.posted||'')); });
   function v(it,k){ return (it[k]!=null && it[k]!=='') ? it[k] : D[k]; }
   function sc(st){ return st==='売約済'?'sold':(st==='商談中'?'talk':''); }
-  function meter(c){ var m=''; for(var i=1;i<=6;i++){ m+='<i class="'+(c && i<=(7-c)?'on':'')+'"></i>'; } return '<span class="used-meter">'+m+'</span>'; }
+  function meter(c){ var m=''; for(var i=1;i<=5;i++){ m+='<i class="'+(c && i<=(6-c)?'on':'')+'"></i>'; } return '<span class="used-meter">'+m+'</span>'; }
   function priceHtml(it){ var price=v(it,'price');
     if(price==='ASK'||price==null||price===''){ return '<span class="val">ASK</span><span class="sub">お問い合わせください</span>'; }
     if(!isNaN(price)){ return '<span class="val num">¥'+Number(price).toLocaleString()+'</span><span class="sub">税抜・送料別</span>'; }

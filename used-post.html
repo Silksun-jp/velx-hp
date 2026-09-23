@@ -87,7 +87,7 @@
     </div>
 
     <div class="card" style="margin-top:20px;">
-      <h2>2. 状態（メルカリと同じ6段階）</h2>
+      <h2>2. 状態（5段階）</h2>
       <div class="cond" id="cond"></div>
       <label>状態の補足（傷・汚れの場所、動作の良否、写真で分かりにくい点）</label>
       <textarea id="condition_note" placeholder="例：天板に小さな擦り傷あり。刃・テーブル・ハンドルの動作は良好。"></textarea>
@@ -106,12 +106,10 @@
         <label><input type="checkbox" value="上刃（新品）">上刃（新品）</label>
         <label><input type="checkbox" value="上刃（使用品）">上刃（使用品）</label>
         <label><input type="checkbox" value="下刃">下刃</label>
-        <label><input type="checkbox" value="押さえ板">押さえ板</label>
         <label><input type="checkbox" value="取扱説明書">取扱説明書</label>
         <label><input type="checkbox" value="付属工具（六角レンチ等）">付属工具</label>
         <label><input type="checkbox" value="ひずみチェッカー">ひずみチェッカー</label>
         <label><input type="checkbox" value="電源ケーブル">電源ケーブル</label>
-        <label><input type="checkbox" value="ローラーテーブル">ローラーテーブル</label>
       </div>
       <input type="text" id="inc_extra" placeholder="その他の付属品（カンマ区切り）" style="margin-top:8px;">
       <label>欠品・注意点</label>
@@ -157,9 +155,9 @@
 </main>
 <script>
 (function(){
-  var COND=[[1,'新品・未使用','未使用のもの'],[2,'未使用に近い','数回しか使用しておらず、傷や汚れがない'],[3,'目立った傷や汚れなし','よく見ないと分からない程度の傷・汚れ'],[4,'やや傷や汚れあり','見て分かる傷・汚れがあるが、動作に問題なし'],[5,'傷や汚れあり','はっきりした傷・汚れ・サビがある'],[6,'全体的に状態が悪い','部品取り・要修理など']];
+  var COND=[[1,'新品・未使用','未使用のもの'],[2,'未使用に近い','数回しか使用しておらず、傷や汚れがない'],[3,'目立った傷や汚れなし','よく見ないと分からない程度の傷・汚れ'],[4,'やや傷や汚れあり','見て分かる傷・汚れがあるが、動作に問題なし'],[5,'傷や汚れあり','はっきりした傷・汚れ・サビがある']];
   var c=document.getElementById('cond');
-  c.innerHTML=COND.map(function(x){ var m=''; for(var i=1;i<=6;i++) m+='<i class="'+(i<=(7-x[0])?'on':'')+'"></i>'; return '<label><input type="radio" name="cond" value="'+x[0]+'"'+(x[0]===3?' checked':'')+'><b>'+x[1]+'</b><span style="color:#888;font-size:.8rem;">'+x[2]+'</span><span class="m">'+m+'</span></label>'; }).join('');
+  c.innerHTML=COND.map(function(x){ var m=''; for(var i=1;i<=5;i++) m+='<i class="'+(i<=(6-x[0])?'on':'')+'"></i>'; return '<label><input type="radio" name="cond" value="'+x[0]+'"'+(x[0]===3?' checked':'')+'><b>'+x[1]+'</b><span style="color:#888;font-size:.8rem;">'+x[2]+'</span><span class="m">'+m+'</span></label>'; }).join('');
   var today=new Date(); var ymd=today.toISOString().slice(0,10); document.getElementById('posted').value=ymd;
   document.getElementById('id').value='U'+ymd.slice(0,4)+'-'+String(today.getMonth()+1).padStart(2,'0')+String(today.getDate()).padStart(2,'0')+'-'+String(today.getHours()).padStart(2,'0')+String(today.getMinutes()).padStart(2,'0');
   document.getElementById('model').addEventListener('input', function(){ var t=document.getElementById('title'); if(!t.dataset.touched) t.value=this.value+' デモ機'; });
