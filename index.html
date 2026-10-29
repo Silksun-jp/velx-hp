@@ -298,6 +298,20 @@
     </div>
   </div>
 </section>
+<section id="calendar">
+  <div class="reveal">
+    <div class="section-label">BUSINESS CALENDAR</div>
+    <h2 class="section-h2">営業日カレンダー</h2>
+    <div class="section-divider"></div>
+    <p class="section-lead">
+      営業時間は平日 9:00〜17:30 です。土・日・祝日、年末年始などは休業とさせていただきます。臨時休業がある場合は、こちらのカレンダーとページ上部のお知らせでご案内いたします。
+    </p>
+  </div>
+  <div id="biz-calendar" class="reveal" style="transition-delay:0.1s">
+    <noscript>営業時間：月〜金 9:00〜17:30（土・日・祝日および年末年始を除く）</noscript>
+  </div>
+  <p class="bc-note">※ 休業日にいただいたメール・お問い合わせフォームのご連絡は、翌営業日以降に順次ご対応いたします。</p>
+</section>
 <section id="contact">
   <div class="reveal">
     <div class="section-label">CONTACT</div>
@@ -344,7 +358,7 @@
       </div>
       <div class="hours-note">
         【受付時間】月〜金 9:00〜17:30<br>
-        土・日・祝日および年末年始を除く<br><br>
+        土・日・祝日および年末年始を除く<br><a href="#calendar" style="color:var(--teal);text-decoration:none;">→ 営業日カレンダーを見る</a><br><br>
         FAX：0267-27-0931
       </div>
     </div>
@@ -430,6 +444,7 @@
         <li><a href="products.html">製品紹介</a></li><li><a href="products-splitter.html">スプリッター</a></li><li><a href="used.html">デモ機・中古機販売</a></li><li><a href="strain.html">ひずみの検証</a></li><li><a href="reliability.html">専門家解説</a></li><li><a href="blade.html">刃の交換注意点</a></li>
         <li><a href="selection.html">機種選定について</a></li>
         <li><a href="index.html#about">会社案内</a></li>
+        <li><a href="index.html#calendar">営業日カレンダー</a></li>
         <li><a href="index.html#contact">お問い合わせ</a></li>
       </ul>
     </div>
@@ -448,6 +463,8 @@
     <span class="footer-copy" style="opacity:0.5">velx.co.jp</span>
   </div>
 </footer>
+<script src="assets/calendar-data.js"></script>
+<script src="assets/calendar.js"></script>
 <script src="assets/site.js"></script>
 </body>
 </html>
